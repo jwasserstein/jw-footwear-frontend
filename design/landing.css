@@ -79,7 +79,7 @@ Begin Navbar
 }
 
 .Navbar-spacer {
-    height: 30px;
+    height: 60px;
 }
 
 @media (max-width: 900px){
@@ -141,6 +141,97 @@ Begin Navbar
 End Navbar
 */
 
+/*
+Begin Hero
+*/
+
+.Hero {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.Hero-image {
+    width: 100%;
+    height: 100%;
+    background-image: url('../src/images/shoe-on-feet.jpg');
+    background-position: center center;
+    background-size: cover;
+}
+
+.Hero-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 80px 0 0 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Hero-text h1 {
+    margin: 0;
+    font-size: 36px;
+    text-align: center;
+}
+
+.Hero-text p {
+    margin: 10px 0;
+    font-size: 18px;
+    text-align: center;
+}
+
+.Hero-text a {
+    text-decoration: none;
+    color: black;
+    background-color: #DBF8FF;
+    padding: 10px 50px;
+    font-size: 18px;
+    border-radius: 7px;
+}
+
+.Hero-text a:hover {
+    background-color: #A7EEFF;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 900px){
+    .Hero-text {
+        position: static;
+        margin: 30px 15px;
+    }
+
+    .Hero-text h1 {
+        margin: 0;
+        font-size: 28px;
+    }
+    
+    .Hero-text p {
+        margin: 10px 0;
+        font-size: 18px;
+    }
+    
+    .Hero-text a {
+        text-decoration: none;
+        color: black;
+        background-color: #DBF8FF;
+        padding: 10px 50px;
+        font-size: 18px;
+        border-radius: 7px;
+    }
+}
+
+/*
+Begin Hero
+*/
+
 /* 
 Begin Footer
 */
@@ -153,10 +244,6 @@ Begin Footer
     justify-content: center;
     padding: 15px;
     box-sizing: border-box;
-    position: absolute;
-    width: 100%;
-    left: 0;
-    bottom: 0;
     background-color: #EFEFEF;
     border-top: 1px solid #D2D2D2;
 }
