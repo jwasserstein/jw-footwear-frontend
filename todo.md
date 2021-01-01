@@ -1,0 +1,1 @@
+- Fix product page layout so each row is aligned instead of centering
