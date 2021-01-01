@@ -1,1 +1,2 @@
 - Fix product page layout so each row is aligned instead of centering
+- Convert images on product page to <img/> tags
