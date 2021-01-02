@@ -1,0 +1,3 @@
+- Fix product page layout so each row is aligned instead of centering
+- Convert images on product page to <img/> tags
+- Make everything smaller.  Update Figma.  24px -> 18px, 18px -> 14px.

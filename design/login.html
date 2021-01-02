@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>JW Footwear</title>
-        <link rel='stylesheet' type='text/css' href='landing.css' />
+        <title>JW Footwear | Log In</title>
+        <link rel='stylesheet' type='text/css' href='login.css' />
         <link rel='icon' type='image/x-icon' href='favicon.ico' />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
     </head>
     <body>
         <header class='Navbar'>
@@ -26,19 +26,26 @@
                 <a href='/login' class='Navbar-link Navbar-signup-btn'>Sign Out</a>
             </div>
         </header>
-        <div class='main-container'>
-            <div class='Navbar-spacer'></div>
-            <main class='Hero'>
-                <div class='Hero-image'></div>
-                <div class="Hero-text">
-                    <h1>Welcome to JW Footwear!</h1>
-                    <p>We’re the largest retailer of shoes that doesn’t actually sell shoes!</p>
-                    <a href="#">Shop Now!</a>
-                </div>
-            </main>
-            <footer class='LandingPage-footer'>
-                For demonstration purposes only, not a real store.  Made by Justin Wasserstein in 2020.
-            </footer>
+        <div class='Navbar-spacer'></div>
+
+        <div class="main-container">
+            <h2>Log in to JW Footwear</h2>
+            <form>
+                <label>
+                    Username: 
+                    <input type="text" name="username" placeholder="Username" required />
+                </label>
+                <label>
+                    Password:
+                    <input type="password" name="password" placeholder="Password" required />
+                </label>
+                <button>Log in</button>
+            </form>
         </div>
+
+        <div class='Footer-spacer'></div>
+        <footer class='LandingPage-footer'>
+            For demonstration purposes only, not a real store.  Made by Justin Wasserstein in 2020.
+        </footer>
     </body>
 </html>
