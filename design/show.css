@@ -290,11 +290,31 @@ p {
     font-size: 18px;
 }
 
+.review>div {
+    display: flex;
+    flex-direction: column;
+}
+
 .review>div>p {
     font-size: 14px;
 }
 
 .review .fa-star{
     color:#FFF500;
+}
+
+@media (max-width:900px){
+    .review {
+        flex-direction: column;
+    }
+
+    .review>div {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .review>p {
+        margin: 5px 0 0 0;
+    }
 }
 /* End Review */
