@@ -49,7 +49,7 @@ class SignupPage extends Component {
 
 		return (
 			<div>
-				<h2 className='SignupPage-message'>Make an account</h2>
+				<h2 className='SignupPage-message'>Sign up with JW Footwear</h2>
 				{error && (
 					<Message>
 						{error}
