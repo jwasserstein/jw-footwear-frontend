@@ -6,6 +6,7 @@ import {Provider} from 'react-redux';
 import {configureStore} from '../../store';
 import LandingPage from '../LandingPage';
 import AboutPage from '../AboutPage';
+import LoginPage from '../LoginPage';
 
 const store = configureStore();
 
@@ -16,6 +17,7 @@ function App() {
                 <div className="App">
                     <Navbar />
                     <Switch>
+                        <Route path='/login' component={LoginPage} />
                         <Route path='/about' component={AboutPage} />
                         <Route path='/' component={LandingPage} />
                     </Switch>
