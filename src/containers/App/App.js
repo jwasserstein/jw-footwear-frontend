@@ -1,5 +1,6 @@
 import './App.css';
 import Navbar from '../Navbar';
+import Footer from '../Footer';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {configureStore} from '../../store';
@@ -16,6 +17,7 @@ function App() {
                     <Switch>
                         <Route path='/' component={LandingPage} />
                     </Switch>
+                    <Footer />
                 </div>
             </Router>
         </Provider>
