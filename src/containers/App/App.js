@@ -7,6 +7,7 @@ import {configureStore} from '../../store';
 import LandingPage from '../LandingPage';
 import AboutPage from '../AboutPage';
 import LoginPage from '../LoginPage';
+import SignupPage from '../SignupPage';
 
 const store = configureStore();
 
@@ -17,6 +18,7 @@ function App() {
                 <div className="App">
                     <Navbar />
                     <Switch>
+                        <Route path='/signup' component={SignupPage} />
                         <Route path='/login' component={LoginPage} />
                         <Route path='/about' component={AboutPage} />
                         <Route path='/' component={LandingPage} />
