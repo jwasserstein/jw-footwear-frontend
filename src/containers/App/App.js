@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {configureStore} from '../../store';
 import LandingPage from '../LandingPage';
+import AboutPage from '../AboutPage';
 
 const store = configureStore();
 
@@ -15,6 +16,7 @@ function App() {
                 <div className="App">
                     <Navbar />
                     <Switch>
+                        <Route path='/about' component={AboutPage} />
                         <Route path='/' component={LandingPage} />
                     </Switch>
                     <Footer />
