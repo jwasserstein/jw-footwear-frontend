@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+html {
+    box-sizing: border-box;
+    min-height: 100vh;
+    position: relative;
+}
+
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
@@ -200,7 +206,7 @@ Begin Hero
 
 .main-container {
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 52px - 61px);
     display: flex;
     flex-direction: column;
 }
@@ -215,10 +221,14 @@ Begin Hero
         margin: 0;
         font-size: 28px;
     }
+
+    .main-container {
+        height: calc(100vh - 94px - 43px);
+    }
 }
 
 /*
-Begin Hero
+End Hero
 */
 
 /* 
@@ -235,6 +245,19 @@ Begin Footer
     box-sizing: border-box;
     background-color: #EFEFEF;
     border-top: 1px solid #D2D2D2;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.Footer-spacer {
+    height: 52px;
+}
+
+@media (max-width: 900px){
+    .Footer-spacer {
+        height: 94px;
+    }
 }
 
 /* 
