@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://bank-of-wasserstein-api.herokuapp.com/api';
+const API_BASE_URL = 'http://localhost:3001/api';
 
 export async function apiCall(type, url, data) {
 	if(type.toLowerCase() === 'get'){
