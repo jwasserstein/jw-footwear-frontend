@@ -5,6 +5,7 @@
 - Create reducers
 - Create action creators
 - Make backend URL an environment variable: process.env.BACKEND_URL || http://localhost:3001/api
+- Add page name to <title>
 
 # Code to Share
 - withAuth() in hocs/withAuth.js
