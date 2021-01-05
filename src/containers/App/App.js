@@ -11,6 +11,7 @@ import LoginPage from '../LoginPage';
 import SignupPage from '../SignupPage';
 import ProfilePage from '../ProfilePage';
 import ProductPage from '../ProductPage';
+import ShowPage from '../ShowPage';
 
 const store = configureStore();
 
@@ -21,6 +22,7 @@ function App() {
                 <div className="App">
                     <Navbar />
                     <Switch>
+                        <Route path='/products/:productId' component={ShowPage} />
                         <Route path='/products' component={ProductPage} />
                         <Route path='/profile' component={withAuth(ProfilePage)} />
                         <Route path='/signup' component={SignupPage} />

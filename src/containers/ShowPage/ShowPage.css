@@ -1,0 +1,66 @@
+.ShowPage-main-container {
+    width: 90%;
+    max-width: 1300px;
+    margin: auto;
+}
+
+.ShowPage-inner-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 900px){
+    .ShowPage-inner-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.ShowPage-image {
+    width: 100%;
+    max-width: 525px;
+    margin-bottom: 15px;
+}
+
+.ShowPage-main-container h2 {
+    font-size: 36px;
+    margin: 30px 0 10px 0;
+}
+
+.ShowPage-price, .ShowPage-description {
+    font-size: 24px;
+    margin: 0;
+}
+
+@media (max-width: 900px){
+    .ShowPage-main-container h2 {
+        font-size: 24px;
+        text-align: center;
+    }
+}
+
+.ShowPage-price-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ShowPage-price-container p {
+    font-size: 36px;
+    margin: 10px 0;
+}
+
+.ShowPage-price-container a {
+    text-decoration: none;
+    color: black;
+    background-color: #DBF8FF;
+    padding: 10px 50px;
+    font-size: 18px;
+    border-radius: 7px;
+    margin-top: 20px;
+}
+
+.ShowPage-price-container a:hover {
+    background-color: #A7EEFF;
+}
