@@ -11,6 +11,7 @@ import SignupPage from '../SignupPage';
 import ProfilePage from '../ProfilePage';
 import ProductPage from '../ProductPage';
 import ShowPage from '../ShowPage';
+import CartPage from '../CartPage';
 import {restoreCart} from '../../store/actions/cart';
 import {connect} from 'react-redux';
 
@@ -26,6 +27,7 @@ class App extends Component {
                 <div className="App">
                     <Navbar />
                     <Switch>
+                        <Route path='/cart' component={CartPage} />
                         <Route path='/products/:productId' component={ShowPage} />
                         <Route path='/products' component={ProductPage} />
                         <Route path='/profile' component={withAuth(ProfilePage)} />

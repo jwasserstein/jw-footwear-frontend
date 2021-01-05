@@ -9,6 +9,8 @@
 - Add provision for adding multiple items at once to the cart
 - Add <Message> to ShowPage for when user tries to add item to cart without picking a size.  Perhaps use it for feedback that item was added to cart.
 - Consider removing callback functions and promises from actions that don't need to be async
+- Add functionality for remove to CartItem
+- Add proptypes to everything
 
 # Code to Share
 - withAuth() in hocs/withAuth.js
