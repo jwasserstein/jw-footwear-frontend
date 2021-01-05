@@ -1,9 +1,8 @@
+import React, {Component} from 'react';
 import './App.css';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import {Provider} from 'react-redux';
-import {configureStore} from '../../store';
 import withAuth from '../../hocs/withAuth';
 import LandingPage from '../LandingPage';
 import AboutPage from '../AboutPage';
@@ -12,12 +11,17 @@ import SignupPage from '../SignupPage';
 import ProfilePage from '../ProfilePage';
 import ProductPage from '../ProductPage';
 import ShowPage from '../ShowPage';
+import {restoreCart} from '../../store/actions/cart';
+import {connect} from 'react-redux';
 
-const store = configureStore();
 
-function App() {
-    return (
-        <Provider store={store}>
+class App extends Component {
+    componentDidMount(){
+        this.props.restoreCart();
+    }
+
+    render() {
+        return (
             <Router>
                 <div className="App">
                     <Navbar />
@@ -33,8 +37,8 @@ function App() {
                     <Footer />
                 </div>
             </Router>
-        </Provider>
-    );
+        );
+    }
 }
 
-export default App;
+export default connect(null, {restoreCart})(App);

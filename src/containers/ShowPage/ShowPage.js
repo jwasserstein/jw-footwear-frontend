@@ -4,6 +4,7 @@ import Rating from '../../components/Rating';
 import AvailableSizes from '../../components/AvailableSizes';
 import Review from '../../components/Review';
 import {getProducts} from '../../store/actions/products';
+import {addCartItem} from '../../store/actions/cart';
 import PropTypes from 'prop-types';
 import './ShowPage.css';
 
@@ -30,17 +31,8 @@ class ShowPage extends Component {
             return false;
         }
 
-        let cart = JSON.parse(localStorage.getItem('cart'));
-        if(!cart){
-            cart = {[productId]: {[selectedSize]: 1}};
-        } else if(!cart[productId]){
-            cart[productId] = {[selectedSize]: 1};
-        } else if(!cart[productId][selectedSize]){
-            cart[productId][selectedSize] = 1;
-        } else {
-            cart[productId][selectedSize]++;
-        }
-        localStorage.setItem('cart', JSON.stringify(cart));
+        this.props.addCartItem(productId, selectedSize, 1);
+        
         this.setState({selectedSize: 0});
     }
 
@@ -98,7 +90,8 @@ function mapStateToProps(state){
 ShowPage.propTypes = {
     match: PropTypes.object.isRequired,
     products: PropTypes.array.isRequired,
-    getProducts: PropTypes.func.isRequired
+    getProducts: PropTypes.func.isRequired,
+    addCartItem: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps, {getProducts})(ShowPage);
+export default connect(mapStateToProps, {getProducts, addCartItem})(ShowPage);
