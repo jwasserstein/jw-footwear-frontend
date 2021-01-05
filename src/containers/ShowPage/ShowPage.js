@@ -8,10 +8,6 @@ import PropTypes from 'prop-types';
 import './ShowPage.css';
 
 class ShowPage extends Component {
-    constructor(props){
-        super(props);
-    }
-
     componentDidMount(){
         if(this.props.products.length === 0){
             this.props.getProducts();
