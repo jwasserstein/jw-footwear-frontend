@@ -8,6 +8,42 @@ import PropTypes from 'prop-types';
 import './ShowPage.css';
 
 class ShowPage extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            selectedSize: 0
+        };
+        this.addToCart = this.addToCart.bind(this);
+        this.updateSize = this.updateSize.bind(this);
+    }
+
+    updateSize(size){
+        this.setState({...this.state, selectedSize: size});
+    }
+
+    addToCart(){
+        const productId = this.props.match.params.productId;
+        const selectedSize = this.state.selectedSize;
+
+        if(selectedSize === 0){
+            console.log('You need to pick a size first');
+            return false;
+        }
+
+        let cart = JSON.parse(localStorage.getItem('cart'));
+        if(!cart){
+            cart = {[productId]: {[selectedSize]: 1}};
+        } else if(!cart[productId]){
+            cart[productId] = {[selectedSize]: 1};
+        } else if(!cart[productId][selectedSize]){
+            cart[productId][selectedSize] = 1;
+        } else {
+            cart[productId][selectedSize]++;
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        this.setState({selectedSize: 0});
+    }
+
     componentDidMount(){
         if(this.props.products.length === 0){
             this.props.getProducts();
@@ -16,6 +52,7 @@ class ShowPage extends Component {
 
     render() {
         const {match, products} = this.props;
+        const {selectedSize} = this.state;
 
         if(products.length === 0){
             return (<p>Loading...</p>);
@@ -35,11 +72,11 @@ class ShowPage extends Component {
                 <h2>{name}</h2>
                 <div className="ShowPage-inner-container">
                     <img className='ShowPage-image' src={`http://localhost:3001/${imageUrl}`} alt='Shoe' />
-                    <AvailableSizes availableSizes={availableSizes}/>
+                    <AvailableSizes availableSizes={availableSizes} selectedSize={selectedSize} updateSize={this.updateSize}/>
                     <div className='ShowPage-price-container'>
                         <p className='ShowPage-price'>${price}</p>
                         <Rating rating={rating} />
-                        <a href="#">Add to Cart</a>
+                        <button onClick={this.addToCart}>Add to Cart</button>
                     </div>
                 </div>
                 <h2>Description</h2>

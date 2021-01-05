@@ -51,7 +51,7 @@
     margin: 10px 0;
 }
 
-.ShowPage-price-container a {
+.ShowPage-price-container button {
     text-decoration: none;
     color: black;
     background-color: #DBF8FF;
@@ -59,8 +59,10 @@
     font-size: 18px;
     border-radius: 7px;
     margin-top: 20px;
+    border: none;
 }
 
-.ShowPage-price-container a:hover {
+.ShowPage-price-container button:hover {
     background-color: #A7EEFF;
+    cursor: pointer;
 }

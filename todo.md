@@ -6,7 +6,8 @@
 - Create action creators
 - Make backend URL an environment variable: process.env.BACKEND_URL || http://localhost:3001/api
 - Add page name to <title>
-- Make sizes selectable
+- Add provision for adding multiple items at once to the cart
+- Add <Message> to ShowPage for when user tries to add item to cart without picking a size.  Perhaps use it for feedback that item was added to cart.
 
 # Code to Share
 - withAuth() in hocs/withAuth.js
