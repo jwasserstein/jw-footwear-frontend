@@ -5,6 +5,7 @@ import AvailableSizes from '../../components/AvailableSizes';
 import Review from '../../components/Review';
 import {getProducts} from '../../store/actions/products';
 import {addCartItem} from '../../store/actions/cart';
+import Message from '../../components/Message';
 import PropTypes from 'prop-types';
 import './ShowPage.css';
 
@@ -12,7 +13,9 @@ class ShowPage extends Component {
     constructor(props){
         super(props);
         this.state = {
-            selectedSize: 0
+            selectedSize: 0,
+            message: '',
+            messageColor: ''
         };
         this.addToCart = this.addToCart.bind(this);
         this.updateSize = this.updateSize.bind(this);
@@ -26,14 +29,18 @@ class ShowPage extends Component {
         const productId = this.props.match.params.productId;
         const selectedSize = this.state.selectedSize;
 
+        this.timeout = setTimeout(() => this.setState({...this.state, message: '', messageColor: ''}), 3000);
         if(selectedSize === 0){
-            console.log('You need to pick a size first');
+            this.setState({...this.state, message: 'Select a size first', messageColor: 'red'});
             return false;
         }
 
         this.props.addCartItem(productId, selectedSize, 1);
-        
-        this.setState({selectedSize: 0});
+        this.setState({...this.state, selectedSize: 0, message: 'Item added to cart', messageColor: 'green'});
+    }
+
+    componentWillUnmount(){
+        clearTimeout(this.timeout);
     }
 
     componentDidMount(){
@@ -51,7 +58,7 @@ class ShowPage extends Component {
 
     render() {
         const {match, products} = this.props;
-        const {selectedSize} = this.state;
+        const {selectedSize, message, messageColor} = this.state;
 
         if(products.length === 0){
             return (<p>Loading...</p>);
@@ -76,6 +83,11 @@ class ShowPage extends Component {
                         <p className='ShowPage-price'>${price}</p>
                         <Rating rating={rating} />
                         <button onClick={this.addToCart}>Add to Cart</button>
+                        {message && (
+                            <Message color={messageColor}>
+                                {message}
+                            </Message>
+                        )}
                     </div>
                 </div>
                 <h2>Description</h2>

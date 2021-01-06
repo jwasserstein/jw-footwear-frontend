@@ -6,7 +6,6 @@
 - Create action creators
 - Make backend URL an environment variable: process.env.BACKEND_URL || http://localhost:3001/api
 - Add provision for adding multiple items at once to the cart
-- Add <Message> to ShowPage for when user tries to add item to cart without picking a size.  Perhaps use it for feedback that item was added to cart.
 - Consider removing callback functions and promises from actions that don't need to be async
 - Add proptypes to everything
 
@@ -16,3 +15,7 @@
 - createStore() in store/index.js
 - store/actions/auth.js
 - store/reducers/auth.js
+- <Message>
+- <Navbar>
+- <Footer>
+- <Form>
