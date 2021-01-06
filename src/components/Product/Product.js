@@ -6,7 +6,7 @@ import './Product.css';
 
 const Product = ({name, price, shortDescription, imageUrl, rating, numReviews, _id}) => (
     <Link className='Product' to={`/products/${_id}`}>
-        <div className="Product-image" style={{backgroundImage: `url(${imageUrl})`}}></div>
+        <img className="Product-image" src={imageUrl} alt={name} />
         <div className="Product-row">
             <h3>{name}</h3>
             <p className='Product-price'>${price}</p>
