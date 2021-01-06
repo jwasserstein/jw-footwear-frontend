@@ -5,13 +5,10 @@
 - Create reducers
 - Create action creators
 - Make backend URL an environment variable: process.env.BACKEND_URL || http://localhost:3001/api
-- Add page name to <title>
 - Add provision for adding multiple items at once to the cart
 - Add <Message> to ShowPage for when user tries to add item to cart without picking a size.  Perhaps use it for feedback that item was added to cart.
 - Consider removing callback functions and promises from actions that don't need to be async
-- Add functionality for remove to CartItem
 - Add proptypes to everything
-- Consider refactoring cart data storage in redux and localStorage to use an array of objects, where each object is a single product-size combination.  More closely matches the format needed for display on the <CartPage> and it's easier to understand.
 
 # Code to Share
 - withAuth() in hocs/withAuth.js

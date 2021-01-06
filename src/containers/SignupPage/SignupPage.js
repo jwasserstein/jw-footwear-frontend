@@ -17,6 +17,10 @@ class SignupPage extends Component {
 			error: ''
 		};
 	}
+
+	componentDidMount() {
+		document.title = 'JW Footwear | Signup';
+	}
 	
 	onChange = e => {
 		this.setState({...this.state, [e.target.name]: e.target.value});

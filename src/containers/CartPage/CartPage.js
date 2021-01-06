@@ -8,6 +8,7 @@ import './CartPage.css';
 
 class CartPage extends Component {
     componentDidMount(){
+        document.title = 'JW Footwear | Cart';
         if(!this.props.lastUpdated){
             this.props.getProducts();
         }

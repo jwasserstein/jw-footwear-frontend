@@ -16,6 +16,10 @@ class LoginPage extends Component {
 			error: ''
 		};
 	}
+
+	componentDidMount() {
+		document.title = 'JW Footwear | Login';
+	}
 	
 	onChange = e => {
 		this.setState({...this.state, [e.target.name]: e.target.value});

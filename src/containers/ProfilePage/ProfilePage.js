@@ -20,6 +20,10 @@ class ProfilePage extends Component{
         this.onSubmit = this.onSubmit.bind(this);
     }
 
+    componentDidMount() {
+        document.title = 'JW Footwear | Profile';
+    }
+
     onChange(e){
         this.setState({...this.state, [e.target.name]: e.target.value});
     }

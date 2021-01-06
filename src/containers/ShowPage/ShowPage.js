@@ -38,7 +38,14 @@ class ShowPage extends Component {
 
     componentDidMount(){
         if(this.props.products.length === 0){
-            this.props.getProducts();
+            this.props.getProducts()
+                .then(() => {
+                    const product = this.props.products.find(p => p._id === this.props.match.params.productId);
+                    document.title = `JW Footwear | ${product.name}`;
+                });
+        } else {
+            const product = this.props.products.find(p => p._id === this.props.match.params.productId);
+            document.title = `JW Footwear | ${product.name}`;
         }
     }
 
@@ -57,7 +64,7 @@ class ShowPage extends Component {
             longDescription,
             imageUrl, 
             price
-        } = products.filter(p => p._id === match.params.productId)[0];
+        } = products.find(p => p._id === match.params.productId);
 
         return (
             <div className="ShowPage-main-container">

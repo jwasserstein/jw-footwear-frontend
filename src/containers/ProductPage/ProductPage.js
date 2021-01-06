@@ -6,6 +6,7 @@ import './ProductPage.css';
 
 class ProductPage extends Component {
     componentDidMount(){
+        document.title = 'JW Footwear | Products';
         if(!this.props.lastUpdated){
             this.props.getProducts()
                 .catch(err => console.log(err));
