@@ -68,10 +68,14 @@
 }
 
 .Navbar-spacer {
-    height: 30px;
+    height: 61px;
 }
 
 @media (max-width: 900px){
+    .Navbar-spacer {
+        height: 43px;
+    }
+    
     .Navbar {
         flex-direction: column;
         align-items: flex-start;

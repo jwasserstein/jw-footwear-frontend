@@ -1,0 +1,23 @@
+.AboutPage-main-container {
+    width: 90%;
+    max-width: 700px;
+    margin: auto;
+}
+
+.AboutPage-main-container h2 {
+    text-align: center;
+    font-size: 24px;
+}
+
+.AboutPage-main-container p, .AboutPage-main-container li {
+    font-size: 18px;
+}
+
+.AboutPage-handcrafted {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.AboutPage-handcrafted span {
+    color: red;
+}

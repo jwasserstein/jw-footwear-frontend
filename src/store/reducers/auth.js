@@ -2,7 +2,8 @@ import {LOG_OUT, LOG_IN} from '../actionTypes';
 
 const DEFAULT_STATE = {
 	userId: '',
-	username: ''
+	username: '',
+	loggedInAt: 0
 }
 
 export function authReducer(state=DEFAULT_STATE, action){
