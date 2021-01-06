@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
-import {logOut} from '../../store/actions/auth';
 import PropTypes from 'prop-types';
 import './Navbar.css';
 
@@ -65,17 +63,10 @@ class Navbar extends Component{
 	}
 } 
 
-function mapStateToProps(state){
-	return {
-		username: state?.authReducer?.username,
-		cartCount: state.cartReducer.cartCount
-	};
-}
-
 Navbar.propTypes = {
 	username: PropTypes.string,
 	cartCount: PropTypes.number.isRequired,
 	logOut: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps, {logOut})(Navbar);
+export default Navbar;

@@ -5,8 +5,6 @@
 - Make backend URL an environment variable: process.env.BACKEND_URL || http://localhost:3001/api
 - Add provision for adding multiple items at once to the cart
 - Consider removing callback functions and promises from actions that don't need to be async
-- Add proptypes to everything
-- Disconnect <Navbar> from redux, feed data down from <App> as props instead
 
 # Code to Share
 - withAuth() in hocs/withAuth.js
