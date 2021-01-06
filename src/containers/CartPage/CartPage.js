@@ -27,7 +27,7 @@ class CartPage extends Component {
             subTotalPrice += product.price * item.quantity;
             return (<CartItem 
                 id={item.id}
-                imageUrl={`http://localhost:3001/${product.imageUrl}`} 
+                imageUrl={product.imageUrl} 
                 name={product.name} 
                 size={+item.size}
                 price={product.price} 

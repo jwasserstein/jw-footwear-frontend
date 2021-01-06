@@ -23,7 +23,7 @@ class ProductPage extends Component {
                                                             name={p.name} 
                                                             price={p.price} 
                                                             shortDescription={p.shortDescription} 
-                                                            imageUrl={`http://localhost:3001/${p.imageUrl}`}
+                                                            imageUrl={p.imageUrl}
                                                             rating={p.rating}
                                                             numReviews={p.reviews.length}
                                                             _id={p._id}

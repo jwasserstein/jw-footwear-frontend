@@ -77,7 +77,7 @@ class ShowPage extends Component {
             <div className="ShowPage-main-container">
                 <h2>{name}</h2>
                 <div className="ShowPage-inner-container">
-                    <img className='ShowPage-image' src={`http://localhost:3001/${imageUrl}`} alt='Shoe' />
+                    <img className='ShowPage-image' src={imageUrl} alt='Shoe' />
                     <AvailableSizes availableSizes={availableSizes} selectedSize={selectedSize} updateSize={this.updateSize}/>
                     <div className='ShowPage-price-container'>
                         <p className='ShowPage-price'>${price}</p>
