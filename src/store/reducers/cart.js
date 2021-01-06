@@ -1,29 +1,34 @@
-import {ADD_CART_ITEM, RESTORE_CART} from '../actionTypes';
+import {ADD_CART_ITEM, RESTORE_CART, REMOVE_CART_ITEM} from '../actionTypes';
 
 const DEFAULT_STATE = {
-    cart: {},
+    cart: [],
     cartCount: 0
 }
 
 export function cartReducer(state=DEFAULT_STATE, action){
-    const {id, size, quantity} = action;
+    const {id, size, quantity, lsCart, lsCartCount} = action;
+    let newCart, idSizeCombo, newCartCount;
 	switch (action.type){
 		case ADD_CART_ITEM:
-            const newCart = {...state.cart};
-            
-            if(!newCart[id]){
-                newCart[id] = {[size]: quantity};
-            } else if (!newCart[id][size]){
-                newCart[id][size] = quantity;
-            } else {
-                newCart[id][size] += quantity;
-            };
+            newCart = state.cart.map(item => ({...item}));
+            idSizeCombo = newCart.find(item => item.id === id && item.size === size);
 
-            const newCartCount = state.cartCount + quantity;
+            if(!idSizeCombo){
+                newCart.push({id, size, quantity});
+            } else {
+                idSizeCombo.quantity += quantity;
+            }
+
+            newCartCount = state.cartCount + quantity;
 
             return {...state, cart: newCart, cartCount: newCartCount, lastUpdated: Date.now()};
         case RESTORE_CART:
-            return {...state, cart: action.lsCart, cartCount: action.cartCount, lastUpdated: Date.now()};
+            return {...state, cart: lsCart, cartCount: lsCartCount, lastUpdated: Date.now()};
+        case REMOVE_CART_ITEM:
+            newCart = state.cart.map(item => ({...item}));
+            newCart = newCart.filter(item => item.id !== id || item.size !== size);
+            newCartCount = state.cartCount - quantity;
+            return {...state, cart: newCart, cartCount: newCartCount, lastUpdated: Date.now()};
 		default: 
 			return state;
 	}

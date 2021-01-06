@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './CartItem.css';
 
-const CartItem = ({imageUrl, name, size, price, quantity, longDescription}) => (
+const CartItem = ({id, imageUrl, name, size, price, quantity, longDescription, removeCartItem}) => (
     <div className="CartItem">
         <div className='CartItem-outer-container'>
             <img src={imageUrl} alt="Shoe" />
@@ -18,7 +18,7 @@ const CartItem = ({imageUrl, name, size, price, quantity, longDescription}) => (
             </div> 
         </div>
         <p className='CartItem-description'>{longDescription}</p>                 
-        <p className='CartItem-remove'>Remove</p>
+        <p className='CartItem-remove' onClick={removeCartItem.bind(this, id, size, quantity)}>Remove</p>
     </div>
 );
 
@@ -28,7 +28,8 @@ CartItem.propTypes = {
     size: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired,
     quantity: PropTypes.number.isRequired,
-    longDescription: PropTypes.string.isRequired
+    longDescription: PropTypes.string.isRequired,
+    removeCartItem: PropTypes.func.isRequired
 };
 
 export default CartItem;

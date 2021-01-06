@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import CartItem from '../../components/CartItem';
 import PropTypes from 'prop-types';
 import {getProducts} from '../../store/actions/products';
+import {removeCartItem} from '../../store/actions/cart';
 import './CartPage.css';
 
 class CartPage extends Component {
@@ -13,29 +14,30 @@ class CartPage extends Component {
     }
 
     render() {
-        const {cart, products, lastUpdated} = this.props;
+        const {cart, products, lastUpdated, removeCartItem} = this.props;
 
         if(!lastUpdated){
             return (<p>Loading...</p>);
         }      
 
-        let totalPrice = 0;
-        const cartItemElements = [];
-        cart && Object.keys(cart).forEach(productId => {
-            const product = products.filter(p => p._id === productId)[0];
-            cart[productId] && Object.keys(cart[productId]).forEach(size => {
-                cartItemElements.push(<CartItem 
-                                            imageUrl={`http://localhost:3001/${product.imageUrl}`} 
-                                            name={product.name} 
-                                            size={+size}
-                                            price={product.price} 
-                                            quantity={cart[productId][size]} 
-                                            longDescription={product.longDescription}
-                                            key={`${product.name}${size}`}
-                                        />);
-                totalPrice += product.price * cart[productId][size];
-            });
+        let subTotalPrice = 0;
+        const cartItemElements = cart?.map(item => {
+            const product = products.find(product => product._id === item.id);
+            subTotalPrice += product.price * item.quantity;
+            return (<CartItem 
+                id={item.id}
+                imageUrl={`http://localhost:3001/${product.imageUrl}`} 
+                name={product.name} 
+                size={+item.size}
+                price={product.price} 
+                quantity={item.quantity} 
+                longDescription={product.longDescription}
+                removeCartItem={removeCartItem}
+                key={`${product.name}${item.size}`}
+            />)
         });
+
+        const shipping = subTotalPrice ? 10 : 0;
 
         return (
             <div className="CartPage-main-container">
@@ -50,20 +52,20 @@ class CartPage extends Component {
                             <h3>Summary</h3>
                             <div className='CartPage-summary-line'>
                                 <p>Subtotal:</p>
-                                <p>${totalPrice.toFixed(2)}</p>
+                                <p>${subTotalPrice.toFixed(2)}</p>
                             </div>
                             <div className='CartPage-summary-line CartPage-small'>
                                 <p>Shipping:</p>
-                                <p>$10.00</p>
+                                <p>${shipping.toFixed(2)}</p>
                             </div>
                             <div className='CartPage-summary-line CartPage-small'>
                                 <p>Taxes:</p>
-                                <p>${(totalPrice*.0635).toFixed(2)}</p>
+                                <p>${(subTotalPrice*.0635).toFixed(2)}</p>
                             </div>
                             <hr />
                             <div className='CartPage-summary-line'>
                                 <p>Total:</p>
-                                <p>${(totalPrice*1.0635+10).toFixed(2)}</p>
+                                <p>${(subTotalPrice*1.0635+shipping).toFixed(2)}</p>
                             </div>
                         </div>
                         <button>Checkout</button>
@@ -84,9 +86,10 @@ function mapStateToProps(state){
 }
 
 CartPage.propTypes = {
-    cart: PropTypes.object,
+    cart: PropTypes.array,
     lastUpdated: PropTypes.number,
-    getProducts: PropTypes.func.isRequired
+    getProducts: PropTypes.func.isRequired,
+    removeCartItem: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps, {getProducts})(CartPage);
+export default connect(mapStateToProps, {getProducts, removeCartItem})(CartPage);

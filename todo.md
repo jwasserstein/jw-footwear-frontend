@@ -11,6 +11,7 @@
 - Consider removing callback functions and promises from actions that don't need to be async
 - Add functionality for remove to CartItem
 - Add proptypes to everything
+- Consider refactoring cart data storage in redux and localStorage to use an array of objects, where each object is a single product-size combination.  More closely matches the format needed for display on the <CartPage> and it's easier to understand.
 
 # Code to Share
 - withAuth() in hocs/withAuth.js
