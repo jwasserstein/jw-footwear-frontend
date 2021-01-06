@@ -2,7 +2,8 @@ import {ADD_CART_ITEM, RESTORE_CART, REMOVE_CART_ITEM} from '../actionTypes';
 
 const DEFAULT_STATE = {
     cart: [],
-    cartCount: 0
+    cartCount: 0,
+    lastUpdated: 0
 }
 
 export function cartReducer(state=DEFAULT_STATE, action){

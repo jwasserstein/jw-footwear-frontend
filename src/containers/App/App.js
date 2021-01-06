@@ -14,6 +14,7 @@ import ShowPage from '../ShowPage';
 import CartPage from '../CartPage';
 import {restoreCart} from '../../store/actions/cart';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
 
 class App extends Component {
@@ -42,5 +43,9 @@ class App extends Component {
         );
     }
 }
+
+App.propTypes = {
+    restoreCart: PropTypes.func.isRequired
+};
 
 export default connect(null, {restoreCart})(App);

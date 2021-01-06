@@ -1,5 +1,6 @@
 import React from 'react';
 import Rating from '../Rating';
+import PropTypes from 'prop-types';
 import './Review.css';
 
 const Review = ({rating, author, comment}) => (
@@ -11,5 +12,11 @@ const Review = ({rating, author, comment}) => (
         <p className='Review-comment'>{comment}</p>
     </div>
 );
+
+Review.propTypes = {
+    rating: PropTypes.number.isRequired,
+    author: PropTypes.string.isRequired,
+    comment: PropTypes.string.isRequired
+};
 
 export default Review;

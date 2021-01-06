@@ -1,7 +1,8 @@
 import {GET_PRODUCTS} from '../actionTypes';
 
 const DEFAULT_STATE = {
-	products: []
+	products: [],
+	lastUpdated: 0
 }
 
 export function productReducer(state=DEFAULT_STATE, action){

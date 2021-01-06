@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './AvailableSizes.css';
 
 const AvailableSizes = ({availableSizes, selectedSize, updateSize}) => {
@@ -20,6 +21,12 @@ const AvailableSizes = ({availableSizes, selectedSize, updateSize}) => {
             {sizes}
         </div>
     );
+};
+
+AvailableSizes.propTypes = {
+    availableSizes: PropTypes.array.isRequired,
+    selectedSize: PropTypes.number.isRequired,
+    updateSize: PropTypes.func.isRequired
 };
 
 export default AvailableSizes;

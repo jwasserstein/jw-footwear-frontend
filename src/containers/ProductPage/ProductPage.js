@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getProducts} from '../../store/actions/products';
 import Product from '../../components/Product';
+import PropTypes from 'prop-types';
 import './ProductPage.css';
 
 class ProductPage extends Component {
@@ -49,5 +50,11 @@ function mapStateToProps(state){
         lastUpdated: state.productReducer.lastUpdated
     };
 }
+
+ProductPage.propTypes = {
+    getProducts: PropTypes.func.isRequired,
+    products: PropTypes.array.isRequired,
+    lastUpdated: PropTypes.number.isRequired
+};
 
 export default connect(mapStateToProps, {getProducts})(ProductPage);
