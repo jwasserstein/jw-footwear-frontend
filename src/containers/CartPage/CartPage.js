@@ -19,6 +19,7 @@ class CartPage extends Component {
             return (<p>Loading...</p>);
         }      
 
+        let totalPrice = 0;
         const cartItemElements = [];
         cart && Object.keys(cart).forEach(productId => {
             const product = products.filter(p => p._id === productId)[0];
@@ -31,7 +32,8 @@ class CartPage extends Component {
                                             quantity={cart[productId][size]} 
                                             longDescription={product.longDescription}
                                             key={`${product.name}${size}`}
-                                        />)
+                                        />);
+                totalPrice += product.price * cart[productId][size];
             });
         });
 
@@ -48,7 +50,7 @@ class CartPage extends Component {
                             <h3>Summary</h3>
                             <div className='CartPage-summary-line'>
                                 <p>Subtotal:</p>
-                                <p>$480.00</p>
+                                <p>${totalPrice.toFixed(2)}</p>
                             </div>
                             <div className='CartPage-summary-line CartPage-small'>
                                 <p>Shipping:</p>
@@ -56,12 +58,12 @@ class CartPage extends Component {
                             </div>
                             <div className='CartPage-summary-line CartPage-small'>
                                 <p>Taxes:</p>
-                                <p>$30.48</p>
+                                <p>${(totalPrice*.0635).toFixed(2)}</p>
                             </div>
                             <hr />
                             <div className='CartPage-summary-line'>
                                 <p>Total:</p>
-                                <p>$520.48</p>
+                                <p>${(totalPrice*1.0635+10).toFixed(2)}</p>
                             </div>
                         </div>
                         <button>Checkout</button>
