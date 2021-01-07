@@ -1,0 +1,45 @@
+.CheckoutPage-main-container {
+    width: 90%;
+    max-width: 1300px;
+    margin: auto;
+}
+
+.CheckoutPage-main-container h2 {
+    text-align: center;
+    font-size: 36px;
+    margin: 10px 0;
+}
+
+.CheckoutPage-main-container h3 {
+    text-align: center;
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.CheckoutPage-inner-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.CheckoutPage-form {
+    width: 100%;
+}
+
+.CheckoutPage-form:first-of-type {
+    margin-right: 40px;
+}
+
+.CheckoutPage-field-container {
+    display: flex;
+    justify-content: stretch;
+}
+
+@media (max-width: 900px){
+    .CheckoutPage-inner-container {
+        flex-direction: column;
+    }
+
+    .CheckoutPage-form {
+        margin: 0 0 40px 0;
+    }
+}
