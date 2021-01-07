@@ -5,8 +5,20 @@ import App from './containers/App';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux';
 import {configureStore} from './store';
+import jwtdecode from 'jwt-decode';
+import {LOG_IN} from './store/actionTypes';
 
 const store = configureStore();
+
+// If token already exists and isn't expired, log in
+if(localStorage.getItem('token')){
+	const decoded = jwtdecode(localStorage.getItem('token'));
+	if(Date.now()/1000 - decoded.iat < 3600){
+		store.dispatch({type: LOG_IN, ...decoded});
+	} else {
+		localStorage.removeItem('token');
+	}
+}
 
 ReactDOM.render(
     <React.StrictMode>
