@@ -4,7 +4,7 @@
 - Add provision for adding multiple items at once to the cart
 - Add order history
 - Add ability to leave reviews/ratings
-- Add input validation on <CheckoutPage>
+- Add input validation on <CheckoutPage> (add labels clarifying the required input format)
 - Consider replacing the <CheckoutPage> state field with a drop-down
 
 # Code to Share

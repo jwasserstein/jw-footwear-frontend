@@ -27,6 +27,7 @@ class CheckoutPage extends Component {
     }
 
     componentDidMount(){
+        document.title = 'JW Footwear | Checkout';
         if(!this.props.cart.length){
             this.props.history.push('/cart');
         }
@@ -73,7 +74,7 @@ class CheckoutPage extends Component {
                             <InputField name='shippingAddress' type='text' value={shippingAddress} label='Street Address' onChange={this.onChange} />
                             <div className='CheckoutPage-field-container'>
                                 <InputField name='shippingCity' type='text' value={shippingCity} label='City' onChange={this.onChange} style={{marginRight: '20px'}}/>
-                                <InputField name='shippingState' type='text' value={shippingState} label='State (2 letter abbreviation)' minLength='2' maxLength='2' onChange={this.onChange} />
+                                <InputField name='shippingState' type='text' value={shippingState} label='State' minLength='2' maxLength='2' onChange={this.onChange} />
                             </div>
                             <InputField name='shippingCountry' type='text' value={shippingCountry} label='Country' onChange={this.onChange} />
                         </div>
@@ -81,7 +82,7 @@ class CheckoutPage extends Component {
                             <h3>Payment Information</h3>
                             <InputField name='billingCard' type='text' value={billingCard} label='Card Number' pattern='[\d]*' minLength='16' maxLength='16' onChange={this.onChange} />
                             <div className='CheckoutPage-field-container'>
-                                <InputField name='billingExpDate' type='text' value={billingExpDate} label='Expiration Date (MM/YY)' pattern='[\d]{2}/[\d]{2}' onChange={this.onChange} style={{marginRight: '20px'}}/>
+                                <InputField name='billingExpDate' type='text' value={billingExpDate} label='Expiration Date' pattern='[\d]{2}/[\d]{2}' onChange={this.onChange} style={{marginRight: '20px'}}/>
                                 <InputField name='billingSecCode' type='text' value={billingSecCode} label='Security Code' pattern='[\d]*' minLength='3' maxLength='3' onChange={this.onChange} />
                             </div>
                         </div>

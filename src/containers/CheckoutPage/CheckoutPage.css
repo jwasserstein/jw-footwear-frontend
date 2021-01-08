@@ -51,7 +51,7 @@
 }
 
 @media (max-width: 900px){
-    .CheckoutPage-form {
+    .CheckoutPage-form>div {
         flex-direction: column;
     }
 }
