@@ -1,4 +1,4 @@
-import {ADD_CART_ITEM, RESTORE_CART, REMOVE_CART_ITEM} from '../actionTypes';
+import {ADD_CART_ITEM, RESTORE_CART, REMOVE_CART_ITEM, EMPTY_CART} from '../actionTypes';
 
 export function addCartItem(id, size, quantity) {
 	let lsCart = JSON.parse(localStorage.getItem('cart'));
@@ -36,4 +36,8 @@ export function removeCartItem(id, size, quantity){
 	localStorage.setItem('cart', JSON.stringify(lsCart));
 	localStorage.setItem('cartCount', lsCartCount);
 	return {type: REMOVE_CART_ITEM, id, size, quantity};
+}
+
+export function emptyCart(){
+	return {type: EMPTY_CART};
 }
