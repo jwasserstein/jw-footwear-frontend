@@ -17,8 +17,6 @@ class CheckoutPage extends Component {
             shippingCity: '',
             shippingState: '',
             shippingCountry: '',
-            billingName: '',
-            billingAddress: '',
             billingCard: '',
             billingExpDate: '',
             billingSecCode: ''
@@ -28,14 +26,20 @@ class CheckoutPage extends Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
 
+    componentDidMount(){
+        if(!this.props.cart.length){
+            this.props.history.push('/cart');
+        }
+    }
+
     onChange(e) {
         this.setState({...this.state, [e.target.name]: e.target.value});
     }
 
     onSubmit(e) {
         e.preventDefault();
-        const {shippingName, shippingAddress, shippingCity, shippingState, shippingCountry, 
-            billingName, billingAddress, billingCard, billingExpDate, billingSecCode} = this.state;
+        const {shippingName, shippingAddress, shippingCity, shippingState, shippingCountry,
+            billingCard, billingExpDate, billingSecCode} = this.state;
 
         this.props.placeOrder({
             items: this.props.cart,
@@ -44,8 +48,6 @@ class CheckoutPage extends Component {
             shippingCity,
             shippingState,
             shippingCountry,
-            billingName,
-            billingAddress,
             billingCard,
             billingExpDate,
             billingSecCode
@@ -58,8 +60,7 @@ class CheckoutPage extends Component {
 
     render() {
         const {shippingName, shippingAddress, shippingCity, shippingState, 
-            shippingCountry, billingName, billingAddress, billingCard,
-            billingExpDate, billingSecCode} = this.state;
+            shippingCountry, billingCard, billingExpDate, billingSecCode} = this.state;
 
         return (
             <div className='CheckoutPage-main-container'>
@@ -72,18 +73,16 @@ class CheckoutPage extends Component {
                             <InputField name='shippingAddress' type='text' value={shippingAddress} label='Street Address' onChange={this.onChange} />
                             <div className='CheckoutPage-field-container'>
                                 <InputField name='shippingCity' type='text' value={shippingCity} label='City' onChange={this.onChange} style={{marginRight: '20px'}}/>
-                                <InputField name='shippingState' type='text' value={shippingState} label='State' minlength='2' maxlength='2' onChange={this.onChange} />
+                                <InputField name='shippingState' type='text' value={shippingState} label='State (2 letter abbreviation)' minLength='2' maxLength='2' onChange={this.onChange} />
                             </div>
                             <InputField name='shippingCountry' type='text' value={shippingCountry} label='Country' onChange={this.onChange} />
                         </div>
                         <div className='CheckoutPage-subform'>
                             <h3>Payment Information</h3>
-                            <InputField name='billingName' type='text' value={billingName} label='Name on Card' onChange={this.onChange} />
-                            <InputField name='billingAddress' type='text' value={billingAddress} label='Billing Address' onChange={this.onChange} />
-                            <InputField name='billingCard' type='text' value={billingCard} label='Card Number' pattern='[\d]*' minlength='16' maxlength='16' onChange={this.onChange} />
+                            <InputField name='billingCard' type='text' value={billingCard} label='Card Number' pattern='[\d]*' minLength='16' maxLength='16' onChange={this.onChange} />
                             <div className='CheckoutPage-field-container'>
-                                <InputField name='billingExpDate' type='text' value={billingExpDate} label='Expiration Date' onChange={this.onChange} style={{marginRight: '20px'}}/>
-                                <InputField name='billingSecCode' type='text' value={billingSecCode} label='Security Code' onChange={this.onChange} />
+                                <InputField name='billingExpDate' type='text' value={billingExpDate} label='Expiration Date (MM/YY)' pattern='[\d]{2}/[\d]{2}' onChange={this.onChange} style={{marginRight: '20px'}}/>
+                                <InputField name='billingSecCode' type='text' value={billingSecCode} label='Security Code' pattern='[\d]*' minLength='3' maxLength='3' onChange={this.onChange} />
                             </div>
                         </div>
                     </div>
@@ -103,7 +102,8 @@ function mapStateToProps(state){
 CheckoutPage.propTypes = {
     cart: PropTypes.array.isRequired,
     placeOrder: PropTypes.func.isRequired,
-    emptyCart: PropTypes.func.isRequired
+    emptyCart: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps, {placeOrder, emptyCart})(CheckoutPage);

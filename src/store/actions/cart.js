@@ -39,5 +39,7 @@ export function removeCartItem(id, size, quantity){
 }
 
 export function emptyCart(){
+	localStorage.setItem('cart', '[]');
+	localStorage.setItem('cartCount', '0');
 	return {type: EMPTY_CART};
 }

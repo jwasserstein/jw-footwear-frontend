@@ -5,7 +5,7 @@
 - Add order history
 - Add ability to leave reviews/ratings
 - Add input validation on <CheckoutPage>
-- Add billing fields for city, state, and country
+- Consider replacing the <CheckoutPage> state field with a drop-down
 
 # Code to Share
 - withAuth() in hocs/withAuth.js
