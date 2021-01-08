@@ -64,29 +64,31 @@ class CheckoutPage extends Component {
         return (
             <div className='CheckoutPage-main-container'>
                 <h2>Checkout</h2>
-                <form className='CheckoutPage-form'>
-                    <div className='CheckoutPage-subform'>
-                        <h3>Shipping Information</h3>
-                        <InputField name='shippingName' type='text' value={shippingName} label='Full Name' onChange={this.onChange} />
-                        <InputField name='shippingAddress' type='text' value={shippingAddress} label='Street Address' onChange={this.onChange} />
-                        <div className='CheckoutPage-field-container'>
-                            <InputField name='shippingCity' type='text' value={shippingCity} label='City' onChange={this.onChange} style={{marginRight: '20px'}}/>
-                            <InputField name='shippingState' type='text' value={shippingState} label='State' onChange={this.onChange} />
+                <form className='CheckoutPage-form' onSubmit={this.onSubmit}>
+                    <div>
+                        <div className='CheckoutPage-subform'>
+                            <h3>Shipping Information</h3>
+                            <InputField name='shippingName' type='text' value={shippingName} label='Full Name' onChange={this.onChange} />
+                            <InputField name='shippingAddress' type='text' value={shippingAddress} label='Street Address' onChange={this.onChange} />
+                            <div className='CheckoutPage-field-container'>
+                                <InputField name='shippingCity' type='text' value={shippingCity} label='City' onChange={this.onChange} style={{marginRight: '20px'}}/>
+                                <InputField name='shippingState' type='text' value={shippingState} label='State' minlength='2' maxlength='2' onChange={this.onChange} />
+                            </div>
+                            <InputField name='shippingCountry' type='text' value={shippingCountry} label='Country' onChange={this.onChange} />
                         </div>
-                        <InputField name='shippingCountry' type='text' value={shippingCountry} label='Country' onChange={this.onChange} />
-                    </div>
-                    <div className='CheckoutPage-subform'>
-                        <h3>Payment Information</h3>
-                        <InputField name='billingName' type='text' value={billingName} label='Name on Card' onChange={this.onChange} />
-                        <InputField name='billingAddress' type='text' value={billingAddress} label='Billing Address' onChange={this.onChange} />
-                        <InputField name='billingCard' type='text' value={billingCard} label='Card Number' onChange={this.onChange} />
-                        <div className='CheckoutPage-field-container'>
-                            <InputField name='billingExpDate' type='text' value={billingExpDate} label='Expiration Date' onChange={this.onChange} style={{marginRight: '20px'}}/>
-                            <InputField name='billingSecCode' type='text' value={billingSecCode} label='Security Code' onChange={this.onChange} />
+                        <div className='CheckoutPage-subform'>
+                            <h3>Payment Information</h3>
+                            <InputField name='billingName' type='text' value={billingName} label='Name on Card' onChange={this.onChange} />
+                            <InputField name='billingAddress' type='text' value={billingAddress} label='Billing Address' onChange={this.onChange} />
+                            <InputField name='billingCard' type='text' value={billingCard} label='Card Number' pattern='[\d]*' minlength='16' maxlength='16' onChange={this.onChange} />
+                            <div className='CheckoutPage-field-container'>
+                                <InputField name='billingExpDate' type='text' value={billingExpDate} label='Expiration Date' onChange={this.onChange} style={{marginRight: '20px'}}/>
+                                <InputField name='billingSecCode' type='text' value={billingSecCode} label='Security Code' onChange={this.onChange} />
+                            </div>
                         </div>
                     </div>
+                    <Button form className='CheckoutPage-btn'>Place Order</Button>
                 </form>
-                <Button form className='CheckoutPage-btn' onClick={this.onSubmit}>Place Order</Button>
             </div>
         );
     }

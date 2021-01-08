@@ -4,6 +4,8 @@
 - Add provision for adding multiple items at once to the cart
 - Add order history
 - Add ability to leave reviews/ratings
+- Add input validation on <CheckoutPage>
+- Add billing fields for city, state, and country
 
 # Code to Share
 - withAuth() in hocs/withAuth.js

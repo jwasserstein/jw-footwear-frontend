@@ -21,6 +21,13 @@
 .CheckoutPage-form {
     width: 100%;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.CheckoutPage-form>div {
+    width: 100%;
+    display: flex;
     justify-content: center;
 }
 
