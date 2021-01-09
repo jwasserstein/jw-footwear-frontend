@@ -9,7 +9,8 @@ export function placeOrder(order){
                 if(resp.error){
 					return reject(resp.error);
                 }
-                dispatch({type: GET_ORDERS, orders: resp});
+                const orders = resp.sort((a, b) => (new Date(b.date)) - (new Date(a.date)));
+                dispatch({type: GET_ORDERS, orders});
                 return resolve();
             } catch(err) {
                 return reject(err.message);
@@ -26,7 +27,8 @@ export function getOrders(){
                 if(resp.error){
 					return reject(resp.error);
                 }
-                dispatch({type: GET_ORDERS, orders: resp});
+                const orders = resp.sort((a, b) => (new Date(b.date)) - (new Date(a.date)));
+                dispatch({type: GET_ORDERS, orders});
                 return resolve();
             } catch(err) {
                 return reject(err.message);

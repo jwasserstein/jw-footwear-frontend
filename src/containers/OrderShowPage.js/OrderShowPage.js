@@ -81,7 +81,7 @@ class OrderShowPage extends Component {
                             </div>
                             <div className='OrderShowPage-info-line'>
                                 <p>Card Number:</p>
-                                <p>{order.billingCard}</p>
+                                <p>{String(order.billingCard).match(/.{4}/g).join('-')}</p>
                             </div>
                             <div className='OrderShowPage-info-line'>
                                 <p>Expiration Date:</p>
