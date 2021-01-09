@@ -6,6 +6,7 @@
 - Add ability to leave reviews/ratings
 - Add input validation on <CheckoutPage> (add labels clarifying the required input format)
 - Consider replacing the <CheckoutPage> state field with a drop-down
+- Adjust spacing on mobile layout of <CartPage>
 
 # Code to Share
 - withAuth() in hocs/withAuth.js
