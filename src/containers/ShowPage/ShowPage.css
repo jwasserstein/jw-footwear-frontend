@@ -67,3 +67,42 @@
     background-color: #A7EEFF;
     cursor: pointer;
 }
+
+.ShowPage-reviews-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.ShowPage-reviews-container>div:first-of-type {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.ShowPage-reviews-container a {
+    text-decoration: none;
+    color: black;
+    background-color: #DBF8FF;
+    padding: 10px 30px;
+    font-size: 18px;
+    border-radius: 7px;
+    margin-top: 20px;
+    border: none;
+}
+
+.ShowPage-reviews-container a:hover {
+    background-color: #A7EEFF;
+    cursor: pointer;
+}
+
+@media (max-width:900px){
+    .ShowPage-reviews-container {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 40px;
+    }
+
+    .ShowPage-reviews-container>div:first-of-type {
+        margin: 0 0 10px 0;
+    }
+}

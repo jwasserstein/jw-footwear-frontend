@@ -16,6 +16,7 @@ import CheckoutPage from '../CheckoutPage';
 import ProfilePage from '../ProfilePage';
 import OrderHistoryPage from '../OrderHistoryPage.js';
 import OrderShowPage from '../OrderShowPage.js';
+import ReviewPage from '../ReviewPage';
 import {restoreCart} from '../../store/actions/cart';
 import {logOut} from '../../store/actions/auth';
 import {connect} from 'react-redux';
@@ -35,6 +36,7 @@ class App extends Component {
                 <div className="App">
                     <Navbar username={username} cartCount={cartCount} logOut={logOut} />
                     <Switch>
+                        <Route path='/review/:productId' component={withAuth(ReviewPage)} />
                         <Route path='/orders/:orderId' component={withAuth(OrderShowPage)} />
                         <Route path='/orders' component={withAuth(OrderHistoryPage)} />
                         <Route path='/profile' component={withAuth(ProfilePage)} />

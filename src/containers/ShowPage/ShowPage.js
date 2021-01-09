@@ -6,6 +6,7 @@ import Review from '../../components/Review';
 import {getProducts} from '../../store/actions/products';
 import {addCartItem} from '../../store/actions/cart';
 import Message from '../../components/Message';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './ShowPage.css';
 
@@ -93,8 +94,15 @@ class ShowPage extends Component {
                 <h2>Description</h2>
                 <p className='ShowPage-description'>{longDescription}</p>
                 <h2>Reviews</h2>
-                <Review rating={4} author='testUsername' comment='I bought this shoe and I really like it.'/>
-                <Review rating={2} author='otherUsername' comment="It didn't really fit"/>
+                <div className='ShowPage-reviews-container'>
+                    <div>
+                        <Review rating={4} author='testUsername' comment='I bought this shoe and I really like it.'/>
+                        <Review rating={2} author='otherUsername' comment="It didn't really fit"/>
+                    </div>
+                    <div>
+                        <Link to={`/review/${match.params.productId}`}>Add Review</Link>
+                    </div>
+                </div>
             </div>
         );
     }
