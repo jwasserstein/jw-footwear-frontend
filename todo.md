@@ -4,6 +4,10 @@
 - Add provision for adding multiple items at once to the cart
 - Add order history
 - Add ability to leave reviews/ratings
+- Add input validation on <CheckoutPage> (add labels clarifying the required input format)
+- Consider replacing the <CheckoutPage> state field with a drop-down
+- Adjust spacing on mobile layout of <CartPage>
+- Try to combine <CartItem> with <OrderItem>.  The only difference is <OrderItem> doesn't have the remove button
 
 # Code to Share
 - withAuth() in hocs/withAuth.js

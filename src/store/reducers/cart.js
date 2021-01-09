@@ -1,4 +1,4 @@
-import {ADD_CART_ITEM, RESTORE_CART, REMOVE_CART_ITEM} from '../actionTypes';
+import {ADD_CART_ITEM, RESTORE_CART, REMOVE_CART_ITEM, EMPTY_CART} from '../actionTypes';
 
 const DEFAULT_STATE = {
     cart: [],
@@ -30,6 +30,8 @@ export function cartReducer(state=DEFAULT_STATE, action){
             newCart = newCart.filter(item => item.id !== id || item.size !== size);
             newCartCount = state.cartCount - quantity;
             return {...state, cart: newCart, cartCount: newCartCount, lastUpdated: Date.now()};
+        case EMPTY_CART:
+            return {...state, cart: [], cartCount: 0, lastUpdated: Date.now()}
 		default: 
 			return state;
 	}

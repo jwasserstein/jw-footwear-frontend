@@ -15,7 +15,7 @@ class CartPage extends Component {
     }
 
     render() {
-        const {cart, products, lastUpdated, removeCartItem} = this.props;
+        const {cart, products, lastUpdated, removeCartItem, history} = this.props;
 
         if(!lastUpdated){
             return (<p>Loading...</p>);
@@ -69,7 +69,7 @@ class CartPage extends Component {
                                 <p>${(subTotalPrice*1.0635+shipping).toFixed(2)}</p>
                             </div>
                         </div>
-                        <button>Checkout</button>
+                        <button onClick={() => history.push('/checkout')}>Checkout</button>
                     </div>
                     
                 </div>
@@ -90,7 +90,8 @@ CartPage.propTypes = {
     cart: PropTypes.array,
     lastUpdated: PropTypes.number,
     getProducts: PropTypes.func.isRequired,
-    removeCartItem: PropTypes.func.isRequired
+    removeCartItem: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps, {getProducts, removeCartItem})(CartPage);

@@ -8,10 +8,14 @@ import LandingPage from '../LandingPage';
 import AboutPage from '../AboutPage';
 import LoginPage from '../LoginPage';
 import SignupPage from '../SignupPage';
-import ProfilePage from '../ProfilePage';
+import PasswordPage from '../PasswordPage';
 import ProductPage from '../ProductPage';
 import ShowPage from '../ShowPage';
 import CartPage from '../CartPage';
+import CheckoutPage from '../CheckoutPage';
+import ProfilePage from '../ProfilePage';
+import OrderHistoryPage from '../OrderHistoryPage.js';
+import OrderShowPage from '../OrderShowPage.js';
 import {restoreCart} from '../../store/actions/cart';
 import {logOut} from '../../store/actions/auth';
 import {connect} from 'react-redux';
@@ -31,10 +35,14 @@ class App extends Component {
                 <div className="App">
                     <Navbar username={username} cartCount={cartCount} logOut={logOut} />
                     <Switch>
+                        <Route path='/orders/:orderId' component={withAuth(OrderShowPage)} />
+                        <Route path='/orders' component={withAuth(OrderHistoryPage)} />
+                        <Route path='/profile' component={withAuth(ProfilePage)} />
+                        <Route path='/checkout' component={withAuth(CheckoutPage)} />
                         <Route path='/cart' component={CartPage} />
                         <Route path='/products/:productId' component={ShowPage} />
                         <Route path='/products' component={ProductPage} />
-                        <Route path='/profile' component={withAuth(ProfilePage)} />
+                        <Route path='/password' component={withAuth(PasswordPage)} />
                         <Route path='/signup' component={SignupPage} />
                         <Route path='/login' component={LoginPage} />
                         <Route path='/about' component={AboutPage} />
