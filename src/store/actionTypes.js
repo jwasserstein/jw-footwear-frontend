@@ -7,3 +7,4 @@ export const REMOVE_CART_ITEM = 'REMOVE_CART_ITEM';
 export const GET_ORDERS = 'GET_ORDERS';
 export const EMPTY_CART = 'EMPTY_CART';
 export const REMOVE_ORDERS = 'REMOVE_ORDERS';
+export const GET_REVIEWS = 'GET_REVIEWS';

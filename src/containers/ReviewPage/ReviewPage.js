@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import './ReviewPage.css';
 import {connect} from 'react-redux';
-import Button from '../../components/Button';
+import Rating from '../../components/Rating';
+import {submitReview} from '../../store/actions/reviews';
+import PropTypes from 'prop-types';
 
 class ReviewPage extends Component {
     constructor(props){
@@ -12,32 +14,45 @@ class ReviewPage extends Component {
             text: ''
         };
         this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     onChange(e){
         this.setState({...this.state, [e.target.name]: e.target.value});
     }
 
+    onSubmit(e){
+        e.preventDefault();
+        const {text, rating} = this.state;
+        const {match, history} = this.props;
+        const productId = match.params.productId;
+
+        this.props.submitReview(productId, text, rating)
+            .then(() => history.push(`/products/${productId}`));
+    }
+
     render() {
         const {rating, text} = this.state;
+        const {products, match} = this.props;
+
+        const product = products.find(p => p._id === match.params.productId);
 
         return (
             <div className='ReviewPage-main-container'>
                 <h2>Add a Review</h2>
                 <div className='ReviewPage-item-container'>
-                    <img src='http://localhost:3001/images/basketball-shoe.jpg' alt='' />
+                    <img src={product.imageUrl} alt={product.name} />
                     <div>
-                        <h3>Red Basketball</h3>
-                        <p>A red shoe with a rubber sole and some laces.  
-                            It’s made from the highest quality fabric and rubber.  
-                            Sold as a single shoe.</p>
+                        <h3>{product.name}</h3>
+                        <p>{product.longDescription}</p>
                     </div>
                 </div>
-                <form className='ReviewPage-form'>
+                <form className='ReviewPage-form' onSubmit={this.onSubmit}>
                     <div className='ReviewPage-rating-container'>
                         <label>Rating:</label>
+                        <Rating rating={rating} onClick={rating => this.setState({...this.state, rating})} className='ReviewPage-rating'/>
                     </div>
-                    <label for='ReviewPage-text'>Review:</label>
+                    <label htmlFor='ReviewPage-text'>Review:</label>
                     <textarea id='ReviewPage-text' placeholder='Type your review here...' name='text' value={text} onChange={this.onChange}></textarea>
                     <button>Submit</button>
                 </form>
@@ -48,8 +63,15 @@ class ReviewPage extends Component {
 
 function mapStateToProps(state){
     return {
-
+        products: state.productReducer.products
     };
 }
 
-export default connect(mapStateToProps)(ReviewPage);
+ReviewPage.propTypes = {
+    match: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+    products: PropTypes.array,
+    submitReview: PropTypes.func.isRequired
+};
+
+export default connect(mapStateToProps, {submitReview})(ReviewPage);
