@@ -18,3 +18,21 @@ export function submitReview(productId, text, rating){
         })
     }
 }
+
+export function getReviews(productId){
+    return dispatch => {
+        return new Promise(async function(resolve, reject){
+            try {
+                const resp = await apiCall('get', `/reviews/${productId}`, {});
+                if(resp.error){
+                    return reject(resp.error);
+                }
+
+                dispatch({type: GET_REVIEWS, productId, reviews: resp});
+                return resolve();
+            } catch (err) {
+                return reject(err.message);
+            }
+        })
+    }
+}
