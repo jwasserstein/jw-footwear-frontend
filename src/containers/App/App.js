@@ -8,7 +8,7 @@ import LandingPage from '../LandingPage';
 import AboutPage from '../AboutPage';
 import LoginPage from '../LoginPage';
 import SignupPage from '../SignupPage';
-import ProfilePage from '../ProfilePage';
+import PasswordPage from '../PasswordPage';
 import ProductPage from '../ProductPage';
 import ShowPage from '../ShowPage';
 import CartPage from '../CartPage';
@@ -36,7 +36,7 @@ class App extends Component {
                         <Route path='/cart' component={CartPage} />
                         <Route path='/products/:productId' component={ShowPage} />
                         <Route path='/products' component={ProductPage} />
-                        <Route path='/profile' component={withAuth(ProfilePage)} />
+                        <Route path='/password' component={withAuth(PasswordPage)} />
                         <Route path='/signup' component={SignupPage} />
                         <Route path='/login' component={LoginPage} />
                         <Route path='/about' component={AboutPage} />

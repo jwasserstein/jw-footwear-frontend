@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import {apiCall} from '../../services/api';
 import Message from '../../components/Message';
 import Form from '../../components/Form';
-import './ProfilePage.css';
+import './PasswordPage.css';
 
-class ProfilePage extends Component{
+class PasswordPage extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -21,7 +21,7 @@ class ProfilePage extends Component{
     }
 
     componentDidMount() {
-        document.title = 'JW Footwear | Profile';
+        document.title = 'JW Footwear | Password';
     }
 
     onChange(e){
@@ -72,7 +72,7 @@ class ProfilePage extends Component{
 
         return (
             <div style={{marginBottom: '20px'}}>
-                <h2 className='ProfilePage-message'>Change your password</h2>
+                <h2 className='PasswordPage-message'>Change your password</h2>
                 {message && (
                     <Message color={messageColor} >
                         {message}
@@ -88,4 +88,4 @@ class ProfilePage extends Component{
     }
 }
 
-export default ProfilePage;
+export default PasswordPage;
