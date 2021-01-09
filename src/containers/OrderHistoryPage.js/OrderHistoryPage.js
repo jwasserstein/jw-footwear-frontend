@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import './HistoryPage.css';
+import './OrderHistoryPage.css';
 import Options from '../../components/Options';
 import {connect} from 'react-redux';
 import {getOrders} from '../../store/actions/orders';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 
-class HistoryPage extends Component {
+class OrderHistoryPage extends Component {
     componentDidMount(){
         if(!this.props.lastUpdated){
             this.props.getOrders();
@@ -22,8 +22,8 @@ class HistoryPage extends Component {
             
 
             return (
-                <Options.Item to={`/orders/${o._id}`}>
-                    <div className='HistoryPage-option-container' key={o._id}>
+                <Options.Item to={`/orders/${o._id}`} key={o._id}>
+                    <div className='OrderHistoryPage-option-container'>
                         <p>{dayjs(o.date).format('MM/DD/YYYY')}</p>
                         <p>{numItems} items</p>
                         <p>${total.toFixed(2)}</p>
@@ -33,7 +33,7 @@ class HistoryPage extends Component {
         );
 
         return (
-            <div className='HistoryPage-main-container'>
+            <div className='OrderHistoryPage-main-container'>
                 <h2>Order History</h2>
                 <Options.Container>
                     {optionElements}
@@ -50,10 +50,10 @@ function mapStateToProps(state){
     };
 }
 
-HistoryPage.propTypes = {
+OrderHistoryPage.propTypes = {
     order: PropTypes.array,
     lastUpdated: PropTypes.number,
     getOrders: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps, {getOrders})(HistoryPage);
+export default connect(mapStateToProps, {getOrders})(OrderHistoryPage);
