@@ -14,6 +14,7 @@ import ShowPage from '../ShowPage';
 import CartPage from '../CartPage';
 import CheckoutPage from '../CheckoutPage';
 import ProfilePage from '../ProfilePage';
+import HistoryPage from '../HistoryPage.js';
 import {restoreCart} from '../../store/actions/cart';
 import {logOut} from '../../store/actions/auth';
 import {connect} from 'react-redux';
@@ -33,6 +34,7 @@ class App extends Component {
                 <div className="App">
                     <Navbar username={username} cartCount={cartCount} logOut={logOut} />
                     <Switch>
+                        <Route path='/orders' component={withAuth(HistoryPage)} />
                         <Route path='/profile' component={withAuth(ProfilePage)} />
                         <Route path='/checkout' component={withAuth(CheckoutPage)} />
                         <Route path='/cart' component={CartPage} />

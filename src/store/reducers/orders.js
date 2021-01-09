@@ -1,4 +1,4 @@
-import {GET_ORDERS} from '../actionTypes';
+import {GET_ORDERS, REMOVE_ORDERS} from '../actionTypes';
 
 const DEFAULT_STATE = {
 	orders: [],
@@ -8,7 +8,9 @@ const DEFAULT_STATE = {
 export function orderReducer(state=DEFAULT_STATE, action){
 	switch (action.type){
 		case GET_ORDERS:
-            return {...state, orders: action.orders, lastUpdated: Date.now()};
+			return {...state, orders: action.orders, lastUpdated: Date.now()};
+		case REMOVE_ORDERS:
+			return {...state, orders: [], lastUpdated: 0};
 		default: 
 			return state;
 	}
