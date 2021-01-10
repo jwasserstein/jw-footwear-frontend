@@ -6,6 +6,13 @@
 - Try to combine <CartItem> with <OrderItem>.  The only difference is <OrderItem> doesn't have the remove button
 - Add handling for token expiration.  Add <Message> to all pages that send API requests?
 - Clean up the way orderedProducts works
+- Hero landing image doesn't work on iOS and footer is too far down
+- Order history list is just a black line when it's empty.  Make it say somoething like "You haven't placed any orders yet!"
+- Cart page on iOS is very blown out
+- Replace placeholders with examples of the text the user is supposed to put in them
+- Add some kind of confirmation that an order went through after submitting an order
+- Get rid of Country field in checkout box?  Not used anywhere
+- Auto redirect to https
 
 # Code to Share
 - withAuth() in hocs/withAuth.js
