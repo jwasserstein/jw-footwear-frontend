@@ -1,4 +1,4 @@
-import {LOG_IN, LOG_OUT, REMOVE_ORDERS} from '../actionTypes';
+import {LOG_IN, LOG_OUT, REMOVE_ORDERS, GET_ORDERED_PRODUCTS} from '../actionTypes';
 import {apiCall} from '../../services/api';
 
 export function logIn(username, password) {
@@ -48,5 +48,22 @@ export function logOut() {
 		localStorage.removeItem('token');
 		dispatch({type: LOG_OUT});
 		dispatch({type: REMOVE_ORDERS});
+	}
+}
+
+export function getOrderedProducts() {
+	return dispatch => {
+		return new Promise(async function(resolve, reject) {
+			try {
+				const orderedProducts = await apiCall('get', '/auth/orderedProducts', {});
+				if(orderedProducts.error){
+					return reject(orderedProducts.error);
+				}
+				dispatch({type: GET_ORDERED_PRODUCTS, orderedProducts});
+				return resolve();
+			} catch (err) {
+				return reject(err.message);
+			}
+		});
 	}
 }

@@ -5,7 +5,9 @@ import AvailableSizes from '../../components/AvailableSizes';
 import Review from '../../components/Review';
 import {getProducts} from '../../store/actions/products';
 import {addCartItem} from '../../store/actions/cart';
+import {getReviews} from '../../store/actions/reviews';
 import Message from '../../components/Message';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './ShowPage.css';
 
@@ -44,21 +46,30 @@ class ShowPage extends Component {
     }
 
     componentDidMount(){
-        if(this.props.products.length === 0){
-            this.props.getProducts()
+        const productId = this.props.match.params.productId;
+        let {products, reviews, getProducts, getReviews} = this.props;
+
+        if(products.length === 0){
+            getProducts()
                 .then(() => {
-                    const product = this.props.products.find(p => p._id === this.props.match.params.productId);
+                    products = this.props.products;
+                    const product = products.find(p => p._id === productId);
                     document.title = `JW Footwear | ${product.name}`;
                 });
         } else {
-            const product = this.props.products.find(p => p._id === this.props.match.params.productId);
+            const product = products.find(p => p._id === productId);
             document.title = `JW Footwear | ${product.name}`;
+        }
+        
+        if(!(productId in reviews)){
+            getReviews(productId);
         }
     }
 
     render() {
-        const {match, products} = this.props;
+        const {match, products, orderedProducts} = this.props;
         const {selectedSize, message, messageColor} = this.state;
+        const reviews = this.props.reviews[match.params.productId];
 
         if(products.length === 0){
             return (<p>Loading...</p>);
@@ -72,6 +83,10 @@ class ShowPage extends Component {
             imageUrl, 
             price
         } = products.find(p => p._id === match.params.productId);
+
+        const reviewElements = reviews && reviews.map(r => (
+            <Review rating={r.rating} author={r.authorUsername} comment={r.text} key={r._id}/>
+        ));
 
         return (
             <div className="ShowPage-main-container">
@@ -93,8 +108,16 @@ class ShowPage extends Component {
                 <h2>Description</h2>
                 <p className='ShowPage-description'>{longDescription}</p>
                 <h2>Reviews</h2>
-                <Review rating={4} author='testUsername' comment='I bought this shoe and I really like it.'/>
-                <Review rating={2} author='otherUsername' comment="It didn't really fit"/>
+                <div className='ShowPage-reviews-container'>
+                    <div>
+                        {reviewElements}
+                    </div>
+                    <div>
+                        {orderedProducts.includes(match.params.productId) && (
+                            <Link to={`/review/${match.params.productId}`}>Add&nbsp;Review</Link>
+                        )}
+                    </div>
+                </div>
             </div>
         );
     }
@@ -102,7 +125,9 @@ class ShowPage extends Component {
 
 function mapStateToProps(state){
     return {
-        products: state.productReducer.products
+        products: state.productReducer.products,
+        reviews: state.reviewReducer,
+        orderedProducts: state.authReducer.orderedProducts
     };
 }
 
@@ -110,7 +135,10 @@ ShowPage.propTypes = {
     match: PropTypes.object.isRequired,
     products: PropTypes.array.isRequired,
     getProducts: PropTypes.func.isRequired,
-    addCartItem: PropTypes.func.isRequired
+    addCartItem: PropTypes.func.isRequired,
+    reviews: PropTypes.object,
+    getReviews: PropTypes.func.isRequired,
+    orderedProducts: PropTypes.array
 };
 
-export default connect(mapStateToProps, {getProducts, addCartItem})(ShowPage);
+export default connect(mapStateToProps, {getProducts, addCartItem, getReviews})(ShowPage);

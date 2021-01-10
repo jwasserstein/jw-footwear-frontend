@@ -8,6 +8,9 @@
 - Consider replacing the <CheckoutPage> state field with a drop-down
 - Adjust spacing on mobile layout of <CartPage>
 - Try to combine <CartItem> with <OrderItem>.  The only difference is <OrderItem> doesn't have the remove button
+- Add handling for token expiration.  Add <Message> to all pages that send API requests?
+- Clean up the way orderedProducts works
+- Adjust responsiveness on <ShowPage>
 
 # Code to Share
 - withAuth() in hocs/withAuth.js

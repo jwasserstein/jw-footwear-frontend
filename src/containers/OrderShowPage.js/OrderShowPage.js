@@ -8,6 +8,7 @@ import OrderItem from '../../components/OrderItem';
 
 class OrderShowPage extends Component {
     componentDidMount(){
+        document.title = 'JW Footwear | Order';
         if(!this.props.lastUpdated){
             this.props.getOrders();
         }
