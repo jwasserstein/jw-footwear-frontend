@@ -104,5 +104,6 @@
 
     .ShowPage-reviews-container>div:first-of-type {
         margin: 0 0 10px 0;
+        width: 100%;
     }
 }

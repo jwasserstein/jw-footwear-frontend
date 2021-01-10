@@ -3,6 +3,7 @@ import './ReviewPage.css';
 import {connect} from 'react-redux';
 import Rating from '../../components/Rating';
 import {submitReview} from '../../store/actions/reviews';
+import {getProducts} from '../../store/actions/products';
 import PropTypes from 'prop-types';
 
 class ReviewPage extends Component {
@@ -24,10 +25,11 @@ class ReviewPage extends Component {
     onSubmit(e){
         e.preventDefault();
         const {text, rating} = this.state;
-        const {match, history} = this.props;
+        const {match, history, submitReview, getProducts} = this.props;
         const productId = match.params.productId;
 
-        this.props.submitReview(productId, text, rating)
+        submitReview(productId, text, rating)
+            .then(() => getProducts())
             .then(() => history.push(`/products/${productId}`));
     }
 
@@ -71,7 +73,8 @@ ReviewPage.propTypes = {
     match: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
     products: PropTypes.array,
-    submitReview: PropTypes.func.isRequired
+    submitReview: PropTypes.func.isRequired,
+    getProducts: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps, {submitReview})(ReviewPage);
+export default connect(mapStateToProps, {submitReview, getProducts})(ReviewPage);
