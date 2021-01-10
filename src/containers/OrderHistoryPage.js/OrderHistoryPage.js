@@ -8,6 +8,7 @@ import dayjs from 'dayjs';
 
 class OrderHistoryPage extends Component {
     componentDidMount(){
+        document.title = 'JW Footwear | Order History';
         if(!this.props.lastUpdated){
             this.props.getOrders();
         }
