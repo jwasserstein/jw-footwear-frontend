@@ -67,7 +67,7 @@ class ShowPage extends Component {
     }
 
     render() {
-        const {match, products} = this.props;
+        const {match, products, orderedProducts} = this.props;
         const {selectedSize, message, messageColor} = this.state;
         const reviews = this.props.reviews[match.params.productId];
 
@@ -113,7 +113,9 @@ class ShowPage extends Component {
                         {reviewElements}
                     </div>
                     <div>
-                        <Link to={`/review/${match.params.productId}`}>Add&nbsp;Review</Link>
+                        {orderedProducts.includes(match.params.productId) && (
+                            <Link to={`/review/${match.params.productId}`}>Add&nbsp;Review</Link>
+                        )}
                     </div>
                 </div>
             </div>
@@ -124,7 +126,8 @@ class ShowPage extends Component {
 function mapStateToProps(state){
     return {
         products: state.productReducer.products,
-        reviews: state.reviewReducer
+        reviews: state.reviewReducer,
+        orderedProducts: state.authReducer.orderedProducts
     };
 }
 
@@ -134,7 +137,8 @@ ShowPage.propTypes = {
     getProducts: PropTypes.func.isRequired,
     addCartItem: PropTypes.func.isRequired,
     reviews: PropTypes.object,
-    getReviews: PropTypes.func.isRequired
+    getReviews: PropTypes.func.isRequired,
+    orderedProducts: PropTypes.array
 };
 
 export default connect(mapStateToProps, {getProducts, addCartItem, getReviews})(ShowPage);

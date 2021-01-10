@@ -20,6 +20,15 @@ class ReviewPage extends Component {
 
     componentDidMount() {
         document.title = 'JW Footwear | Review';
+
+        const {orderedProducts, match, history, products, getProducts} = this.props;
+        if(!orderedProducts?.includes(match.params.productId)){
+            history.push('/products');
+        }
+
+        if(!products?.length){
+            getProducts();
+        }
     }
 
     onChange(e){
@@ -42,6 +51,10 @@ class ReviewPage extends Component {
         const {products, match} = this.props;
 
         const product = products.find(p => p._id === match.params.productId);
+
+        if(!product){
+            return (<p>Loading...</p>);
+        }
 
         return (
             <div className='ReviewPage-main-container'>
@@ -69,7 +82,8 @@ class ReviewPage extends Component {
 
 function mapStateToProps(state){
     return {
-        products: state.productReducer.products
+        products: state.productReducer.products,
+        orderedProducts: state.authReducer.orderedProducts
     };
 }
 
@@ -78,7 +92,8 @@ ReviewPage.propTypes = {
     history: PropTypes.object.isRequired,
     products: PropTypes.array,
     submitReview: PropTypes.func.isRequired,
-    getProducts: PropTypes.func.isRequired
+    getProducts: PropTypes.func.isRequired,
+    orderedProducts: PropTypes.array
 };
 
 export default connect(mapStateToProps, {submitReview, getProducts})(ReviewPage);
