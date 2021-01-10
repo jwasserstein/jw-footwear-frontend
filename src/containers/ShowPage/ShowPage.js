@@ -95,8 +95,8 @@ class ShowPage extends Component {
                     <img className='ShowPage-image' src={imageUrl} alt='Shoe' />
                     <AvailableSizes availableSizes={availableSizes} selectedSize={selectedSize} updateSize={this.updateSize}/>
                     <div className='ShowPage-price-container'>
-                        <p className='ShowPage-price'>${price}</p>
-                        <Rating rating={rating} />
+                        <p className='ShowPage-price'>${price.toFixed(2)}</p>
+                        <Rating rating={rating} className='ShowPage-rating'/>
                         <button onClick={this.addToCart}>Add to Cart</button>
                         {message && (
                             <Message color={messageColor}>
