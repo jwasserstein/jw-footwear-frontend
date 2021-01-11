@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {getOrders} from '../../store/actions/orders';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
-import OrderItem from '../../components/OrderItem';
+import Item from '../../components/Item';
 
 class OrderShowPage extends Component {
     componentDidMount(){
@@ -25,7 +25,7 @@ class OrderShowPage extends Component {
 
         const orderItemElements = order?.items?.map(item => {
             const product = products.find(product => product._id === item.id);
-            return (<OrderItem 
+            return (<Item 
                         id={item.id}
                         imageUrl={product.imageUrl} 
                         name={product.name} 

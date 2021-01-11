@@ -2,7 +2,6 @@
 - Package up common code between BOW and JW Footwear, share using an NPM package or Bit
 - Add provision for adding multiple items at once to the cart
 - Consider replacing the <CheckoutPage> state field with a drop-down
-- Try to combine <CartItem> with <OrderItem>.  The only difference is <OrderItem> doesn't have the remove button
 - Add handling for token expiration.  Add <Message> to all pages that send API requests?
 - Clean up the way orderedProducts works
 - Add some kind of confirmation that an order went through after submitting an order
