@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import CartItem from '../../components/CartItem';
+import Item from '../../components/Item';
 import PropTypes from 'prop-types';
 import {getProducts} from '../../store/actions/products';
 import {removeCartItem} from '../../store/actions/cart';
@@ -25,7 +25,7 @@ class CartPage extends Component {
         const cartItemElements = cart?.map(item => {
             const product = products.find(product => product._id === item.id);
             subTotalPrice += product.price * item.quantity;
-            return (<CartItem 
+            return (<Item 
                 id={item.id}
                 imageUrl={product.imageUrl} 
                 name={product.name} 
