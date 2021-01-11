@@ -11,6 +11,8 @@
 - Get rid of Country field in checkout box?  Not used anywhere
 - Make it look good on landscape mode on ios
 - Move images to S3
+- Change "shippingName" to name, remove other references to shipping and billing
+- Make review input box text bigger
 
 # Code to Share
 - withAuth() in hocs/withAuth.js

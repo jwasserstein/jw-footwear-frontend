@@ -70,20 +70,40 @@ class CheckoutPage extends Component {
                     <div>
                         <div className='CheckoutPage-subform'>
                             <h3>Shipping Information</h3>
-                            <InputField name='shippingName' type='text' value={shippingName} label='Full Name' onChange={this.onChange} />
-                            <InputField name='shippingAddress' type='text' value={shippingAddress} label='Street Address' onChange={this.onChange} />
+                            <label htmlFor='shippingName' className='CheckoutPage-label' >Full Name:</label>
+                            <InputField name='shippingName' type='text' value={shippingName} placeholder='John Doe' onChange={this.onChange} />
+
+                            <label htmlFor='shippingAddress' className='CheckoutPage-label' >Street Address:</label>
+                            <InputField name='shippingAddress' type='text' value={shippingAddress} placeholder='100 Wall Street' onChange={this.onChange} />
+
                             <div className='CheckoutPage-field-container'>
-                                <InputField name='shippingCity' type='text' value={shippingCity} label='City' onChange={this.onChange} style={{marginRight: '20px'}}/>
-                                <InputField name='shippingState' type='text' value={shippingState} label='State' minLength='2' maxLength='2' onChange={this.onChange} />
+                                <div style={{marginRight: '20px'}}>
+                                    <label htmlFor='shippingCity' className='CheckoutPage-label' >City:</label>
+                                    <InputField name='shippingCity' type='text' value={shippingCity} placeholder='New York City' onChange={this.onChange} style={{marginRight: '20px'}}/>
+                                </div>
+                                <div>
+                                    <label htmlFor='shippingState' className='CheckoutPage-label' >State <span>(2 letter abbr.):</span></label>
+                                    <InputField name='shippingState' type='text' value={shippingState} placeholder='NY' minLength='2' maxLength='2' onChange={this.onChange} />
+                                </div>
                             </div>
-                            <InputField name='shippingCountry' type='text' value={shippingCountry} label='Country' onChange={this.onChange} />
+
+                            <label htmlFor='shippingCountry' className='CheckoutPage-label' >Country:</label>
+                            <InputField name='shippingCountry' type='text' value={shippingCountry} placeholder='United States of America' onChange={this.onChange} />
                         </div>
                         <div className='CheckoutPage-subform'>
                             <h3>Payment Information</h3>
-                            <InputField name='billingCard' type='text' value={billingCard} label='Card Number' pattern='[\d]*' minLength='16' maxLength='16' onChange={this.onChange} />
+                            <label htmlFor='billingCard' className='CheckoutPage-label' >Card Number:</label>
+                            <InputField name='billingCard' type='text' value={billingCard} placeholder='3333444455556666' pattern='[\d]*' minLength='16' maxLength='16' onChange={this.onChange} />
+
                             <div className='CheckoutPage-field-container'>
-                                <InputField name='billingExpDate' type='text' value={billingExpDate} label='Expiration Date' pattern='[\d]{2}/[\d]{2}' onChange={this.onChange} style={{marginRight: '20px'}}/>
-                                <InputField name='billingSecCode' type='text' value={billingSecCode} label='Security Code' pattern='[\d]*' minLength='3' maxLength='3' onChange={this.onChange} />
+                                <div style={{marginRight: '20px'}}>
+                                    <label htmlFor='billingExpDate' className='CheckoutPage-label' >Exp. Date <span>(MM/YY):</span></label>
+                                    <InputField name='billingExpDate' type='text' value={billingExpDate} placeholder='01/25' pattern='[\d]{2}/[\d]{2}' onChange={this.onChange}/>
+                                </div>
+                                <div>
+                                    <label htmlFor='billingSecCode' className='CheckoutPage-label' >Security Code:</label>
+                                    <InputField name='billingSecCode' type='text' value={billingSecCode} placeholder='793' pattern='[\d]*' minLength='3' maxLength='3' onChange={this.onChange} />
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -50,8 +50,20 @@
     display: flex;
 }
 
+.CheckoutPage-field-container div {
+    width: 100%;
+}
+
 @media (max-width: 900px){
     .CheckoutPage-form>div {
         flex-direction: column;
     }
+}
+
+.CheckoutPage-label {
+    font-size: 18px;
+}
+
+.CheckoutPage-label span {
+    font-size: 14px;
 }
