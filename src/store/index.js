@@ -4,11 +4,9 @@ import rootReducer from './reducers';
 
 export function configureStore(){
 	let middleware;
+	const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 	if(process.env.NODE_ENV === 'development'){
-		middleware = compose(
-			applyMiddleware(thunk),
-			window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-		);
+		middleware = composeEnhancers(applyMiddleware(thunk));
 	} else {
 		middleware = applyMiddleware(thunk);
 	}
