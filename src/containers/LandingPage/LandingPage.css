@@ -1,12 +1,3 @@
-.LandingPage-Hero {
-    position: relative;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-}
-
 .LandingPage-Hero-image {
     width: 100%;
     height: 100%;
@@ -51,9 +42,10 @@
 
 .LandingPage-main-container {
     width: 100vw;
-    height: calc(100vh - 52px - 61px);
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    position: relative;
 }
 
 @media (max-width: 900px){
@@ -65,9 +57,5 @@
     .LandingPage-Hero-text h1 {
         margin: 0;
         font-size: 28px;
-    }
-
-    .LandingPage-main-container {
-        height: calc(100vh - 94px - 43px);
     }
 }
