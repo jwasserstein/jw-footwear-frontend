@@ -16,7 +16,6 @@ class CheckoutPage extends Component {
             shippingAddress: '',
             shippingCity: '',
             shippingState: '',
-            shippingCountry: '',
             billingCard: '',
             billingExpDate: '',
             billingSecCode: ''
@@ -39,7 +38,7 @@ class CheckoutPage extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-        const {shippingName, shippingAddress, shippingCity, shippingState, shippingCountry,
+        const {shippingName, shippingAddress, shippingCity, shippingState,
             billingCard, billingExpDate, billingSecCode} = this.state;
 
         this.props.placeOrder({
@@ -48,7 +47,6 @@ class CheckoutPage extends Component {
             shippingAddress,
             shippingCity,
             shippingState,
-            shippingCountry,
             billingCard,
             billingExpDate,
             billingSecCode
@@ -61,7 +59,7 @@ class CheckoutPage extends Component {
 
     render() {
         const {shippingName, shippingAddress, shippingCity, shippingState, 
-            shippingCountry, billingCard, billingExpDate, billingSecCode} = this.state;
+            billingCard, billingExpDate, billingSecCode} = this.state;
 
         return (
             <div className='CheckoutPage-main-container'>
@@ -86,9 +84,6 @@ class CheckoutPage extends Component {
                                     <InputField name='shippingState' type='text' value={shippingState} placeholder='NY' minLength='2' maxLength='2' onChange={this.onChange} />
                                 </div>
                             </div>
-
-                            <label htmlFor='shippingCountry' className='CheckoutPage-label' >Country:</label>
-                            <InputField name='shippingCountry' type='text' value={shippingCountry} placeholder='United States of America' onChange={this.onChange} />
                         </div>
                         <div className='CheckoutPage-subform'>
                             <h3>Payment Information</h3>
