@@ -23,7 +23,9 @@ class LandingPage extends Component {
     }
 
     updateWindowDimensions(){
-        this.setState({...this.state, width: window.innerWidth, height: window.innerHeight});
+        if(this.state.width !== window.innerWidth){
+            this.setState({...this.state, width: window.innerWidth, height: window.innerHeight});
+        }
     }
 
     render() {
