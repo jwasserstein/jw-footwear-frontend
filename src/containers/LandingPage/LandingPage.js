@@ -23,8 +23,8 @@ class LandingPage extends Component {
     }
 
     updateWindowDimensions(){
-        if(this.state.width !== document.documentElement.clientWidth){
-            this.setState({...this.state, width: document.documentElement.clientWidth, height: document.documentElement.clientHeight});
+        if(this.state.width !== window.innerWidth){
+            this.setState({...this.state, width: window.innerWidth, height: window.innerHeight});
         }
     }
 

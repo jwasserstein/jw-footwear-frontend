@@ -12,6 +12,7 @@
 - Replace placeholders with examples of the text the user is supposed to put in them
 - Add some kind of confirmation that an order went through after submitting an order
 - Get rid of Country field in checkout box?  Not used anywhere
+- Make it look good on landscape mode on ios
 
 # Code to Share
 - withAuth() in hocs/withAuth.js

@@ -26,6 +26,8 @@ import PropTypes from 'prop-types';
 class App extends Component {
     componentDidMount(){
         this.props.restoreCart();
+        const html = document.querySelector('html');
+        html.style.minHeight = `${window.innerHeight}px`;
     }
 
     render() {
