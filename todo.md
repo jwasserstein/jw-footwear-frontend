@@ -6,13 +6,11 @@
 - Try to combine <CartItem> with <OrderItem>.  The only difference is <OrderItem> doesn't have the remove button
 - Add handling for token expiration.  Add <Message> to all pages that send API requests?
 - Clean up the way orderedProducts works
-- Replace placeholders with examples of the text the user is supposed to put in them, also add formatting instructions to labels (with smaller font)
 - Add some kind of confirmation that an order went through after submitting an order
 - Get rid of Country field in checkout box?  Not used anywhere
 - Make it look good on landscape mode on ios
 - Move images to S3
 - Change "shippingName" to name, remove other references to shipping and billing
-- Make review input box text bigger
 
 # Code to Share
 - withAuth() in hocs/withAuth.js
