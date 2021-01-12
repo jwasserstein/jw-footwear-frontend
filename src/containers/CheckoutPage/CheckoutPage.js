@@ -13,13 +13,13 @@ class CheckoutPage extends Component {
         super(props);
 
         this.state = {
-            shippingName: '',
-            shippingAddress: '',
-            shippingCity: '',
-            shippingState: '',
-            billingCard: '',
-            billingExpDate: '',
-            billingSecCode: '',
+            name: '',
+            address: '',
+            city: '',
+            state: '',
+            card: '',
+            expDate: '',
+            secCode: '',
             message: '',
             messageColor: 'red'
         };
@@ -41,28 +41,28 @@ class CheckoutPage extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-        const {shippingName, shippingAddress, shippingCity, shippingState,
-            billingCard, billingExpDate, billingSecCode} = this.state;
+        const {name, address, city, state,
+            card, expDate, secCode} = this.state;
 
         this.props.placeOrder({
             items: this.props.cart,
-            shippingName,
-            shippingAddress,
-            shippingCity,
-            shippingState,
-            billingCard,
-            billingExpDate,
-            billingSecCode
+            name,
+            address,
+            city,
+            state,
+            card,
+            expDate,
+            secCode
         })
         .then(() => {
             this.setState({
-                shippingName: '',
-                shippingAddress: '',
-                shippingCity: '',
-                shippingState: '',
-                billingCard: '',
-                billingExpDate: '',
-                billingSecCode: '',
+                name: '',
+                address: '',
+                city: '',
+                state: '',
+                card: '',
+                expDate: '',
+                secCode: '',
                 message: 'Your order has been placed successfully.  You will be redirected in 3 seconds.',
                 messageColor: 'green'
             })
@@ -76,8 +76,8 @@ class CheckoutPage extends Component {
     }
 
     render() {
-        const {shippingName, shippingAddress, shippingCity, shippingState, 
-            billingCard, billingExpDate, billingSecCode, message, messageColor} = this.state;
+        const {name, address, city, state, 
+            card, expDate, secCode, message, messageColor} = this.state;
 
         return (
             <div className='CheckoutPage-main-container'>
@@ -87,36 +87,36 @@ class CheckoutPage extends Component {
                     <div>
                         <div className='CheckoutPage-subform'>
                             <h3>Shipping Information</h3>
-                            <label htmlFor='shippingName' className='CheckoutPage-label' >Full Name:</label>
-                            <InputField name='shippingName' type='text' value={shippingName} placeholder='John Doe' onChange={this.onChange} />
+                            <label htmlFor='name' className='CheckoutPage-label' >Full Name:</label>
+                            <InputField name='name' type='text' value={name} placeholder='John Doe' onChange={this.onChange} />
 
-                            <label htmlFor='shippingAddress' className='CheckoutPage-label' >Street Address:</label>
-                            <InputField name='shippingAddress' type='text' value={shippingAddress} placeholder='100 Wall Street' onChange={this.onChange} />
+                            <label htmlFor='address' className='CheckoutPage-label' >Street Address:</label>
+                            <InputField name='address' type='text' value={address} placeholder='100 Wall Street' onChange={this.onChange} />
 
                             <div className='CheckoutPage-field-container'>
                                 <div style={{marginRight: '20px'}}>
-                                    <label htmlFor='shippingCity' className='CheckoutPage-label' >City:</label>
-                                    <InputField name='shippingCity' type='text' value={shippingCity} placeholder='New York City' onChange={this.onChange} style={{marginRight: '20px'}}/>
+                                    <label htmlFor='city' className='CheckoutPage-label' >City:</label>
+                                    <InputField name='city' type='text' value={city} placeholder='New York City' onChange={this.onChange} style={{marginRight: '20px'}}/>
                                 </div>
                                 <div>
-                                    <label htmlFor='shippingState' className='CheckoutPage-label' >State <span>(2 letter abbr.):</span></label>
-                                    <InputField name='shippingState' type='text' value={shippingState} placeholder='NY' minLength='2' maxLength='2' onChange={this.onChange} />
+                                    <label htmlFor='state' className='CheckoutPage-label' >State <span>(2 letter abbr.):</span></label>
+                                    <InputField name='state' type='text' value={state} placeholder='NY' minLength='2' maxLength='2' onChange={this.onChange} />
                                 </div>
                             </div>
                         </div>
                         <div className='CheckoutPage-subform'>
                             <h3>Payment Information</h3>
-                            <label htmlFor='billingCard' className='CheckoutPage-label' >Card Number <span>(Use a fake one):</span></label>
-                            <InputField name='billingCard' type='text' value={billingCard} placeholder='3333444455556666' pattern='[\d]*' minLength='16' maxLength='16' onChange={this.onChange} />
+                            <label htmlFor='card' className='CheckoutPage-label' >Card Number <span>(Use a fake one):</span></label>
+                            <InputField name='card' type='text' value={card} placeholder='3333444455556666' pattern='[\d]*' minLength='16' maxLength='16' onChange={this.onChange} />
 
                             <div className='CheckoutPage-field-container'>
                                 <div style={{marginRight: '20px'}}>
-                                    <label htmlFor='billingExpDate' className='CheckoutPage-label' >Exp. Date <span>(MM/YY):</span></label>
-                                    <InputField name='billingExpDate' type='text' value={billingExpDate} placeholder='01/25' pattern='[\d]{2}/[\d]{2}' onChange={this.onChange}/>
+                                    <label htmlFor='expDate' className='CheckoutPage-label' >Exp. Date <span>(MM/YY):</span></label>
+                                    <InputField name='expDate' type='text' value={expDate} placeholder='01/25' pattern='[\d]{2}/[\d]{2}' onChange={this.onChange}/>
                                 </div>
                                 <div>
-                                    <label htmlFor='billingSecCode' className='CheckoutPage-label' >Security Code:</label>
-                                    <InputField name='billingSecCode' type='text' value={billingSecCode} placeholder='793' pattern='[\d]*' minLength='3' maxLength='3' onChange={this.onChange} />
+                                    <label htmlFor='secCode' className='CheckoutPage-label' >Security Code:</label>
+                                    <InputField name='secCode' type='text' value={secCode} placeholder='793' pattern='[\d]*' minLength='3' maxLength='3' onChange={this.onChange} />
                                 </div>
                             </div>
                         </div>

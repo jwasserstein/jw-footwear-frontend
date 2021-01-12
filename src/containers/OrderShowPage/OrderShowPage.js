@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './OrderShowPage.css';
 import {connect} from 'react-redux';
 import {getOrders} from '../../store/actions/orders';
+import {getProducts} from '../../store/actions/products';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 import Item from '../../components/Item';
@@ -17,19 +18,23 @@ class OrderShowPage extends Component {
 
     componentDidMount(){
         document.title = 'JW Footwear | Order';
-        if(!this.props.lastUpdated){
+        if(!this.props.lastUpdatedOrders){
             this.props.getOrders()
+                .catch(err => this.setState({...this.state, message: err}));
+        }
+        if(!this.props.lastUpdatedProducts){
+            this.props.getProducts()
                 .catch(err => this.setState({...this.state, message: err}));
         }
     }
 
     render() {
-        const {orders, products, lastUpdated, match} = this.props;
+        const {orders, products, lastUpdatedOrders, lastUpdatedProducts, match} = this.props;
         const {message} = this.state;
         const order = orders.find(o => o._id === match.params.orderId);
         const total = order?.subTotal + order?.shipping + order?.taxes;
 
-        if(!lastUpdated) {
+        if(!lastUpdatedOrders || !lastUpdatedProducts) {
             return (<p style={{textAlign: 'center'}}>Loading...</p>);
         }
 
@@ -82,22 +87,22 @@ class OrderShowPage extends Component {
                             <h3>Payment Information</h3>
                             <div className='OrderShowPage-info-line'>
                                 <p>Name:</p>
-                                <p>{order.shippingName}</p>
+                                <p>{order.name}</p>
                             </div>
                             <div className='OrderShowPage-info-line'>
                                 <p>Address:</p>
                                 <div>
-                                    <p>{order.shippingAddress}</p>
-                                    <p>{order.shippingCity}, {order.shippingState}</p>
+                                    <p>{order.address}</p>
+                                    <p>{order.city}, {order.state}</p>
                                 </div>
                             </div>
                             <div className='OrderShowPage-info-line'>
                                 <p>Card Number:</p>
-                                <p>{'XXXX-XXXX-XXXX-' + String(order.billingCard)}</p>
+                                <p>{'XXXX-XXXX-XXXX-' + String(order.card)}</p>
                             </div>
                             <div className='OrderShowPage-info-line'>
                                 <p>Expiration Date:</p>
-                                <p>{order.billingExpDate}</p>
+                                <p>{order.expDate}</p>
                             </div>
                         </div>
                     </div>
@@ -110,16 +115,19 @@ class OrderShowPage extends Component {
 function mapStateToProps(state){
     return {
         orders: state.orderReducer.orders,
-        lastUpdated: state.orderReducer.lastUpdated,
-        products: state.productReducer.products
+        lastUpdatedOrders: state.orderReducer.lastUpdated,
+        products: state.productReducer.products,
+        lastUpdatedProducts: state.productReducer.lastUpdated
     };
 }
 
 OrderShowPage.propTypes = {
     orders: PropTypes.array,
-    lastUpdated: PropTypes.number,
+    lastUpdatedOrders: PropTypes.number,
     getOrders: PropTypes.func.isRequired,
-    match: PropTypes.object.isRequired
+    match: PropTypes.object.isRequired,
+    lastUpdatedProducts: PropTypes.number,
+    getProducts: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps, {getOrders})(OrderShowPage);
+export default connect(mapStateToProps, {getOrders, getProducts})(OrderShowPage);
