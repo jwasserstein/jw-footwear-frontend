@@ -8,6 +8,7 @@
 - Make it look good on landscape mode on ios
 - Move images to S3
 - Change "shippingName" to name, remove other references to shipping and billing
+- Only store last 4 digits of card number, or consider removing payment info all together
 
 # Code to Share
 - withAuth() in hocs/withAuth.js

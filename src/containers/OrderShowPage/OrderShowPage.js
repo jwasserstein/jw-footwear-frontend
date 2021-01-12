@@ -82,7 +82,7 @@ class OrderShowPage extends Component {
                             </div>
                             <div className='OrderShowPage-info-line'>
                                 <p>Card Number:</p>
-                                <p>{String(order.billingCard).match(/.{4}/g).join('-')}</p>
+                                <p>{'XXXX-XXXX-XXXX-' + String(order.billingCard)}</p>
                             </div>
                             <div className='OrderShowPage-info-line'>
                                 <p>Expiration Date:</p>

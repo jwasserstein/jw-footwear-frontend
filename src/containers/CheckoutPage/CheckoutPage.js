@@ -87,7 +87,7 @@ class CheckoutPage extends Component {
                         </div>
                         <div className='CheckoutPage-subform'>
                             <h3>Payment Information</h3>
-                            <label htmlFor='billingCard' className='CheckoutPage-label' >Card Number:</label>
+                            <label htmlFor='billingCard' className='CheckoutPage-label' >Card Number <span>(Use a fake one):</span></label>
                             <InputField name='billingCard' type='text' value={billingCard} placeholder='3333444455556666' pattern='[\d]*' minLength='16' maxLength='16' onChange={this.onChange} />
 
                             <div className='CheckoutPage-field-container'>
