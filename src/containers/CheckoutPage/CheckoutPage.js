@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import InputField from '../../components/InputField';
 import Button from '../../components/Button';
+import Message from '../../components/Message';
 import {connect} from 'react-redux';
 import {placeOrder} from '../../store/actions/orders';
 import {emptyCart} from '../../store/actions/cart';
@@ -18,7 +19,9 @@ class CheckoutPage extends Component {
             shippingState: '',
             billingCard: '',
             billingExpDate: '',
-            billingSecCode: ''
+            billingSecCode: '',
+            message: '',
+            messageColor: 'red'
         };
 
         this.onChange = this.onChange.bind(this);
@@ -52,18 +55,34 @@ class CheckoutPage extends Component {
             billingSecCode
         })
         .then(() => {
+            this.setState({
+                shippingName: '',
+                shippingAddress: '',
+                shippingCity: '',
+                shippingState: '',
+                billingCard: '',
+                billingExpDate: '',
+                billingSecCode: '',
+                message: 'Your order has been placed successfully.  You will be redirected in 3 seconds.',
+                messageColor: 'green'
+            })
+            return new Promise(resolve => setTimeout(() => resolve(), 3000));
+        })
+        .then(() => {
             this.props.emptyCart();
             this.props.history.push('/products');
         })
+        .catch(err => this.setState({...this.state, messageColor: 'red', message: err}));
     }
 
     render() {
         const {shippingName, shippingAddress, shippingCity, shippingState, 
-            billingCard, billingExpDate, billingSecCode} = this.state;
+            billingCard, billingExpDate, billingSecCode, message, messageColor} = this.state;
 
         return (
             <div className='CheckoutPage-main-container'>
                 <h2>Checkout</h2>
+                {message && (<Message color={messageColor}>{message}</Message>)}
                 <form className='CheckoutPage-form' onSubmit={this.onSubmit}>
                     <div>
                         <div className='CheckoutPage-subform'>

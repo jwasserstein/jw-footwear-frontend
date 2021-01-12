@@ -1,24 +1,34 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Item from '../../components/Item';
+import Message from '../../components/Message';
 import PropTypes from 'prop-types';
 import {getProducts} from '../../store/actions/products';
 import {removeCartItem} from '../../store/actions/cart';
 import './CartPage.css';
 
 class CartPage extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            message: ''
+        };
+    }
+
     componentDidMount(){
         document.title = 'JW Footwear | Cart';
         if(!this.props.lastUpdated){
-            this.props.getProducts();
+            this.props.getProducts()
+                .catch(err => this.setState({...this.state, message: err}));
         }
     }
 
     render() {
         const {cart, products, lastUpdated, removeCartItem, history} = this.props;
+        const {message} = this.state;
 
         if(!lastUpdated){
-            return (<p>Loading...</p>);
+            return (<p style={{textAlign: 'center'}}>Loading...</p>);
         }      
 
         let subTotalPrice = 0;
@@ -43,6 +53,7 @@ class CartPage extends Component {
         return (
             <div className="CartPage-main-container">
                 <h2>Your Cart</h2>
+                {message && (<Message>{message}</Message>)}
                 <div className="CartPage-inner-container">
                     <div className="CartPage-items">
                         {cartItemElements}

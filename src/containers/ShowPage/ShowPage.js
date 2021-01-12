@@ -55,14 +55,16 @@ class ShowPage extends Component {
                     products = this.props.products;
                     const product = products.find(p => p._id === productId);
                     document.title = `JW Footwear | ${product.name}`;
-                });
+                })
+                .catch(err => this.setState({...this.state, messageColor: 'red', message: err}));
         } else {
             const product = products.find(p => p._id === productId);
             document.title = `JW Footwear | ${product.name}`;
         }
         
         if(!(productId in reviews)){
-            getReviews(productId);
+            getReviews(productId)
+                .catch(err => this.setState({...this.state, messageColor: 'red', message: err}));
         }
     }
 
@@ -72,7 +74,7 @@ class ShowPage extends Component {
         const reviews = this.props.reviews[match.params.productId];
 
         if(products.length === 0){
-            return (<p>Loading...</p>);
+            return (<p style={{textAlign: 'center'}}>Loading...</p>);
         }
 
         const {

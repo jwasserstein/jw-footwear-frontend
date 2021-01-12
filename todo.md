@@ -2,13 +2,10 @@
 - Package up common code between BOW and JW Footwear, share using an NPM package or Bit
 - Add provision for adding multiple items at once to the cart
 - Consider replacing the <CheckoutPage> state field with a drop-down
-- Add handling for token expiration.  Add <Message> to all pages that send API requests?
 - Clean up the way orderedProducts works
-- Add some kind of confirmation that an order went through after submitting an order
 - Make it look good on landscape mode on ios
 - Move images to S3
 - Change "shippingName" to name, remove other references to shipping and billing
-- Only store last 4 digits of card number, or consider removing payment info all together
 
 # Code to Share
 - withAuth() in hocs/withAuth.js

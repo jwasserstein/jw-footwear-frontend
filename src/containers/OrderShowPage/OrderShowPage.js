@@ -5,22 +5,32 @@ import {getOrders} from '../../store/actions/orders';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 import Item from '../../components/Item';
+import Message from '../../components/Message';
 
 class OrderShowPage extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            message: ''
+        };
+    }
+
     componentDidMount(){
         document.title = 'JW Footwear | Order';
         if(!this.props.lastUpdated){
-            this.props.getOrders();
+            this.props.getOrders()
+                .catch(err => this.setState({...this.state, message: err}));
         }
     }
 
     render() {
         const {orders, products, lastUpdated, match} = this.props;
+        const {message} = this.state;
         const order = orders.find(o => o._id === match.params.orderId);
-        const total = order.subTotal + order.shipping + order.taxes;
+        const total = order?.subTotal + order?.shipping + order?.taxes;
 
         if(!lastUpdated) {
-            return (<p>Loading...</p>);
+            return (<p style={{textAlign: 'center'}}>Loading...</p>);
         }
 
         const orderItemElements = order?.items?.map(item => {
@@ -40,6 +50,7 @@ class OrderShowPage extends Component {
         return (
             <div className="OrderShowPage-main-container">
                 <h2>Your Order</h2>
+                {message && <Message>{message}</Message>}
                 <p className='OrderShowPage-date'>{dayjs(order.date).format('MM/DD/YYYY')}</p>
                 <div className="OrderShowPage-inner-container">
                     <div className="OrderShowPage-items">

@@ -2,10 +2,18 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getProducts} from '../../store/actions/products';
 import Product from '../../components/Product';
+import Message from '../../components/Message';
 import PropTypes from 'prop-types';
 import './ProductPage.css';
 
 class ProductPage extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            message: ''
+        };
+    }
+
     componentDidMount(){
         document.title = 'JW Footwear | Products';
         if(!this.props.lastUpdated){
@@ -16,6 +24,7 @@ class ProductPage extends Component {
 
     render() {
         const {products} = this.props;
+        const {message} = this.state;
 
         let productElements = [];
         if(products.length > 0){
@@ -35,6 +44,7 @@ class ProductPage extends Component {
 
         return (
             <div>
+                {message && <Message>{message}</Message>}
                 <p className='ProductPage-materials'>Our shoes are made from the highest quality materials.</p>
                 <div className='ProductPage-product-container'>
                     {productElements}

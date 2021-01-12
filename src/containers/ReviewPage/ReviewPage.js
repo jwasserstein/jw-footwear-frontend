@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './ReviewPage.css';
 import {connect} from 'react-redux';
 import Rating from '../../components/Rating';
+import Message from '../../components/Message';
 import {submitReview} from '../../store/actions/reviews';
 import {getProducts} from '../../store/actions/products';
 import PropTypes from 'prop-types';
@@ -12,7 +13,9 @@ class ReviewPage extends Component {
 
         this.state = {
             rating: 0,
-            text: ''
+            text: '',
+            message: '',
+            messageColor: ''
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -27,7 +30,8 @@ class ReviewPage extends Component {
         }
 
         if(!products?.length){
-            getProducts();
+            getProducts()
+                .catch(err => this.setState({...this.state, messageColor: 'red', message: err}));
         }
     }
 
@@ -42,23 +46,34 @@ class ReviewPage extends Component {
         const productId = match.params.productId;
 
         submitReview(productId, text, rating)
-            .then(() => getProducts())
-            .then(() => history.push(`/products/${productId}`));
+            .then(() => {
+                this.setState({
+                    rating: 0,
+                    text: '',
+                    message: 'Your review has been submitted successfully.  You will be redirected in 3 seconds.',
+                    messageColor: 'green'
+                });
+                return getProducts();
+            })
+            .then(() => new Promise(resolve => setTimeout(() => resolve(), 3000)))
+            .then(() => history.push(`/products/${productId}`))
+            .catch(err => this.setState({...this.state, messageColor: 'red', message: err}));
     }
 
     render() {
-        const {rating, text} = this.state;
+        const {rating, text, message, messageColor} = this.state;
         const {products, match} = this.props;
 
         const product = products.find(p => p._id === match.params.productId);
 
         if(!product){
-            return (<p>Loading...</p>);
+            return (<p style={{textAlign: 'center'}}>Loading...</p>);
         }
 
         return (
             <div className='ReviewPage-main-container'>
                 <h2>Add a Review</h2>
+                {message && (<Message color={messageColor}>{message}</Message>)}
                 <div className='ReviewPage-item-container'>
                     <img src={product.imageUrl} alt={product.name} />
                     <div>
