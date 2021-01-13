@@ -59,3 +59,9 @@
         font-size: 28px;
     }
 }
+
+@media (max-height: 350px){
+    .LandingPage-Hero-image {
+        display: none;
+    }
+}

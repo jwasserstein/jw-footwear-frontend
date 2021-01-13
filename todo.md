@@ -1,11 +1,7 @@
-- Fix product page layout so each row is aligned instead of centering
 - Package up common code between BOW and JW Footwear, share using an NPM package or Bit
 - Add provision for adding multiple items at once to the cart
-- Consider replacing the <CheckoutPage> state field with a drop-down
 - Clean up the way orderedProducts works
 - Make it look good on landscape mode on ios
-- Move images to S3
-- Change "shippingName" to name, remove other references to shipping and billing
 
 # Code to Share
 - withAuth() in hocs/withAuth.js
