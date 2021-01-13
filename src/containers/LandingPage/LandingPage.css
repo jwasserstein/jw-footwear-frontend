@@ -64,4 +64,9 @@
     .LandingPage-Hero-image {
         display: none;
     }
+
+    .LandingPage-Hero-text {
+        flex-grow: 1;
+        justify-content: center;
+    }
 }
