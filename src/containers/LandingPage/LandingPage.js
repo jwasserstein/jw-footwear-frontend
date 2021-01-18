@@ -31,7 +31,7 @@ class LandingPage extends Component {
         const divHeight = width > 900 ? height - 113 : height - 137;
         return (
             <div className='LandingPage-main-container' style={{height: divHeight}}>
-                <div className='LandingPage-Hero-image' style={{backgroundImage: `url('${process.env.REACT_APP_BACKEND_URL}/images/shoe-on-feet.jpg')`}}></div>
+                <div className='LandingPage-Hero-image' style={{backgroundImage: `url('https://jw-footwear.s3.amazonaws.com/shoe-on-feet.jpg')`}}></div>
                 <div className="LandingPage-Hero-text">
                     <h1>Welcome to JW Footwear!</h1>
                     <p>We’re the largest retailer of shoes that doesn’t actually sell shoes!</p>
