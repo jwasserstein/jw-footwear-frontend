@@ -32,7 +32,7 @@ class SignupPage extends Component {
 		if(this.state.password !== this.state.repeatPassword){
 			return this.setState({...this.state, loading: false, error: "Your passwords don't match"});
 		}
-		this.props.signUp(this.state.username, this.state.email, this.state.password)
+		this.props.signUp(this.state.username, this.state.password)
 			.then(() => {
 				this.setState({...this.state, loading: false, error: ''});
 				this.props.history.push('/accounts');

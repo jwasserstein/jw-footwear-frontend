@@ -43,7 +43,7 @@ class LoginPage extends Component {
 		
 		const fields = [
 			{label: 'Username', name: 'username', type: 'text', value: username},
-			{label: 'Password', name: 'password', type: 'password', value: password},	
+			{label: 'Password', name: 'password', type: 'password', value: password}
 		];
 
 		return (
