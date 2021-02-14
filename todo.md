@@ -12,3 +12,7 @@
 - <Navbar>
 - <Footer>
 - <Form>
+
+
+## GitHub Pages Modifications
+- Backend url environment variable

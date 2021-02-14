@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {HashRouter as Router, Switch, Route} from 'react-router-dom';
 import withAuth from '../../hocs/withAuth';
 import LandingPage from '../LandingPage';
 import AboutPage from '../AboutPage';
