@@ -5,7 +5,7 @@ const Footer = () => (
     <div>
         <div className='Footer-spacer'></div>
         <footer className='Footer'>
-            For demonstration purposes only, not a real store.  Made by Justin Wasserstein in 2020.
+            Copyright © 2021, Justin Wasserstein
         </footer> 
     </div>
 );

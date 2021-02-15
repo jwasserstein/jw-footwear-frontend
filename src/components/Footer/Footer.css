@@ -16,9 +16,3 @@
 .Footer-spacer {
     height: 52px;
 }
-
-@media (max-width: 900px){
-    .Footer-spacer {
-        height: 94px;
-    }
-}
