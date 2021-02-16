@@ -5,7 +5,7 @@ JW Footwear is a demonstration e-commerce application that sells shoes.  It allo
 This project was made with `create-react-app`, so it can be run in development with `npm start` or built for production with `npm run build`.
 
 ## Deployment
-This project is currently deployed on Heroku here: [https://jwfootwear.wasserstein.dev](https://jwfootwear.wasserstein.dev).
+This project is currently deployed on GitHub Pages and can be found here: [https://jwfootwear.wasserstein.dev](https://jwfootwear.wasserstein.dev).
 
 ## Backend
 The backend code can be found here: [https://github.com/jwasserstein/jw-footwear-backend](https://github.com/jwasserstein/jw-footwear-backend).
