@@ -35,7 +35,7 @@ const AboutPage = () => {
                     <span className="iconify" data-icon="ant-design:linkedin-filled" data-inline="false"></span>
                     <p>LinkedIn</p>
                 </a>
-                <a href='https://jwasserstein.s3.amazonaws.com/Resume+-+Wasserstein.pdf' target='_blank' rel='noreferrer'>
+                <a href='https://jwasserstein.s3.amazonaws.com/Resume-Wasserstein.pdf' target='_blank' rel='noreferrer'>
                     <span className="iconify" data-icon="fa-regular:clipboard" data-inline="false"></span>
                     <p>Resume</p>
                 </a>

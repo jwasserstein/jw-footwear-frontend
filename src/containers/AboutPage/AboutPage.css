@@ -28,6 +28,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .AboutPage-icon-container a {
@@ -37,7 +38,7 @@
     align-items: center;
     color: black;
     text-decoration: none;
-    margin: 0 15px;
+    margin: 0 15px 15px 15px;
 }
 
 .AboutPage-icon-container a:hover {
